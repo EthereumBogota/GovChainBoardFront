@@ -4217,7 +4217,7 @@ input[type=button].btn-block {
   padding: 0.25rem 0.75rem;
   font-size: 0.99925rem;
   line-height: 1;
-  background-color: #0d0f19;
+  background-color: transparent;
   border: 0.0625rem solid transparent;
   border-radius: 0.25rem;
 }
@@ -10961,6 +10961,28 @@ a.text-darker:hover, a.text-darker:focus {
     border-color: #e3e3e3;
   }
 }
+.main {
+  place-items: center;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: rgb(13, 15, 25);
+  background: linear-gradient(90deg, rgb(13, 15, 25) 19%, rgb(46, 101, 230) 88%);
+}
+.main__link {
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #B4B8C5;
+  box-shadow: 0 0 15px 2px #B4B8C5;
+}
+.main__link--button {
+  font-weight: 500;
+  color: #B4B8C5;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .alert {
   border: 0;
   color: #ffffff;

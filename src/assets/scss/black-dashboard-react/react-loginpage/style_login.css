@@ -1,14 +1,10 @@
 .main {
   place-items: center;
   display: grid;
-  width: 100%;
-  height: 100vh;
   background: rgb(13, 15, 25);
   background: linear-gradient(90deg, rgb(13, 15, 25) 19%, rgb(46, 101, 230) 88%);
 }
 .main__link {
-  width: -moz-fit-content;
-  width: fit-content;
   padding: 12px;
   border-radius: 10px;
   border: 1px solid #B4B8C5;
