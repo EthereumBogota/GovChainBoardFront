@@ -1,5 +1,4 @@
 import React from "react";
-import "src/assets/scss/black-dashboard-react/react-loginpage/style_login.css";
 
 function buttonLogIn(){
     return(

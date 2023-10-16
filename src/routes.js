@@ -17,6 +17,7 @@
 */
 import Dashboard from "views/Dashboard.js";
 import Icons from "views/Icons.js";
+import LogIn from "views/LogIn";
 import Map from "views/Map.js";
 import Notifications from "views/Notifications.js";
 import Rtl from "views/Rtl.js";
@@ -25,6 +26,14 @@ import Typography from "views/Typography.js";
 import UserProfile from "views/UserProfile.js";
 
 var routes = [
+  {
+    path: "/LogIn",
+    name: "LogIn",
+    rtlName: "",
+    icon: "tim-icons icon-single-02",
+    component: <LogIn/>,
+    loyout: "/admin",
+  },
   {
     path: "/dashboard",
     name: "Dashboard",
