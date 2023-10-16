@@ -17,7 +17,7 @@
 */
 import Dashboard from "views/Dashboard.js";
 import Icons from "views/Icons.js";
-import LogIn from "views/LogIn";
+import LogIn from "views/LogIn.js";
 import Map from "views/Map.js";
 import Notifications from "views/Notifications.js";
 import Rtl from "views/Rtl.js";
