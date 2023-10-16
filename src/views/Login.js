@@ -7,7 +7,7 @@ function buttonLogIn(){
 				<div className="content">
 					<Row>
 						<Col md="12">
-							<Card>
+							<Card id="card__style">
 								<CardHeader>
 										<h5 className="title">Conecta tu wallet</h5>
 										<p className="category">
