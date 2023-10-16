@@ -1,0 +1,21 @@
+.main {
+  place-items: center;
+  display: grid;
+  width: 100%;
+  height: 100vh;
+  background: rgb(13, 15, 25);
+  background: linear-gradient(90deg, rgb(13, 15, 25) 19%, rgb(46, 101, 230) 88%);
+}
+.main__link {
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #B4B8C5;
+  box-shadow: 0 0 15px 2px #B4B8C5;
+}
+.main__link--button {
+  font-weight: 500;
+  color: #B4B8C5;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}/*# sourceMappingURL=style_login.css.map */
