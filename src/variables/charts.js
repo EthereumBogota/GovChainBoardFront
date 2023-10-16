@@ -19,6 +19,73 @@
 // // // Chart variables
 // #############################
 
+let josethChart = {
+  chart: {
+    polar: true,
+    type: 'line'
+  },
+  title: {
+    text: 'Student Performance'
+  },
+  xAxis: {
+    categories: [
+      'Math 7',
+      'Physics 8',
+      'Chemistry 9',
+      'Biology 10',
+      'History 11',
+      'Geography 12',
+      'English 13',
+      'Art 14',
+      'Music 15',
+      'Physical Education 16',
+      'Computer Science 17',
+      'Social Studies 18'
+    ] 
+  },
+  yAxis: {
+    min: 0,
+    title: {
+      text: 'Score'
+    }
+  },
+  series: [
+    {
+      name: 'Population',
+      data: [
+        85, 90, 88, 92, 80, 86, 82, 78, 84, 90, 88, 92
+      ] 
+    },
+    {
+      name: '75th Percentile',
+      data: [
+        88, 92, 90, 94, 82, 88, 84, 80, 86, 92, 90, 94
+      ] 
+    },
+    {
+      name: 'Average',
+      data: [
+        86, 88, 85, 90, 80, 84, 82, 78, 82, 88, 86, 90
+      ] 
+    },
+    {
+      name: '25th Percentile',
+      data: [
+        82, 86, 82, 88, 78, 82, 80, 76, 78, 84, 82, 86
+      ] 
+    },
+    {
+      name: 'Student',
+      data: [
+        90, 92, 86, 88, 84, 90, 92, 80, 86, 82, 88, 90
+      ], 
+      pointPlacement: 'on',
+      color: 'red',
+      fillColor: 'rgba(255, 0, 0, 0.3)'
+    }
+  ]
+}
+
 // chartExample1 and chartExample2 options
 let chart1_2_options = {
   maintainAspectRatio: false,

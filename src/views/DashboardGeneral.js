@@ -63,7 +63,7 @@ import {
 
 
 
-function Dashboard(props) {
+function DashboardGeneral(props) {
 
 
   const josethChart = {
@@ -679,4 +679,4 @@ function Dashboard(props) {
   );
 }
 
-export default Dashboard;
+export default DashboardGeneral;
