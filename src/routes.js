@@ -24,7 +24,17 @@ import TableList from "views/TableList.js";
 import Typography from "views/Typography.js";
 import UserProfile from "views/UserProfile.js";
 
+import Login from "views/Login.js"
+
 var routes = [
+  {
+    path: "/login",
+    name: "Login",
+    rtlName: "",
+    icon: "tim-icons icon-single-02",
+    component: <Login />,
+    layout: "/admin",
+  },
   {
     path: "/dashboard",
     name: "Dashboard",
