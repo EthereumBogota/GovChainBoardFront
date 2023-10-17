@@ -62,77 +62,18 @@ import {
 } from "variables/charts.js";
 
 
+import { Dropdown } from 'react-bootstrap';
+
+import { useState } from 'react';
+
+
 
 function DashboardProposal(props) {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-
-  const josethChart = {
-    chart: {
-      polar: true,
-      type: 'line'
-    },
-    title: {
-      text: 'Student Performance'
-    },
-    xAxis: {
-      categories: [
-        'Math 7',
-        'Physics 8',
-        'Chemistry 9',
-        'Biology 10',
-        'History 11',
-        'Geography 12',
-        'English 13',
-        'Art 14',
-        'Music 15',
-        'Physical Education 16',
-        'Computer Science 17',
-        'Social Studies 18'
-      ]
-    },
-    yAxis: {
-      min: 0,
-      title: {
-        text: 'Score'
-      }
-    },
-    series: [
-      {
-        name: 'Population',
-        data: [
-          85, 90, 88, 92, 80, 86, 82, 78, 84, 90, 88, 92
-        ]
-      },
-      {
-        name: '75th Percentile',
-        data: [
-          88, 92, 90, 94, 82, 88, 84, 80, 86, 92, 90, 94
-        ]
-      },
-      {
-        name: 'Average',
-        data: [
-          86, 88, 85, 90, 80, 84, 82, 78, 82, 88, 86, 90
-        ]
-      },
-      {
-        name: '25th Percentile',
-        data: [
-          82, 86, 82, 88, 78, 82, 80, 76, 78, 84, 82, 86
-        ]
-      },
-      {
-        name: 'Student',
-        data: [
-          90, 92, 86, 88, 84, 90, 92, 80, 86, 82, 88, 90
-        ],
-        pointPlacement: 'on',
-        color: 'red',
-        fillColor: 'rgba(255, 0, 0, 0.3)'
-      }
-    ]
-  }
-
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
 
 
   useEffect(() => {
@@ -141,14 +82,13 @@ function DashboardProposal(props) {
     Highcharts.setOptions({
       chart: {
           backgroundColor : "#27293d",
-          
           plotBackgroundColor: '#27293d',
        
       }
     });
 
 
-    const danielChart = {
+    const chartData = {
         chart: {
             type: 'pie'
         },
@@ -423,50 +363,29 @@ function DashboardProposal(props) {
             ]
         }
     }
-    Highcharts.chart('josethChart', danielChart);
+    Highcharts.chart('customChart', chartData);
   }, []);
 
-  const config = {
-    chart: {
-      type: 'treemap',
-    },
-    title: {
-      text: 'Sample Treemap Chart',
-    },
-    series: [
-      {
-        type: 'treemap',
-        layoutAlgorithm: 'squarified',
-        data: [
-          {
-            name: 'Category A',
-            value: 6,
-          },
-          {
-            name: 'Category B',
-            value: 4,
-          },
-          {
-            name: 'Category C',
-            value: 3,
-          },
-          // Add more data points as needed
-        ],
-      },
-    ],
-  };
-  // const setBgChartData = (name) => {
-  //   setbigChartData(name);
-  // };
+
   return (
     <>
       <div className="content">
+   
+
         <Row>
-
-          {/* <Col xs="12">
-            <div id="josethChart" style={{ width: '100%', height: '400px' }}></div>
-          </Col> */}
-
+        {/* <button className="dropdown-toggle" onClick={toggleDropdown}>
+          Toggle Dropdown
+        </button> */}
+        <Dropdown show={isDropdownOpen} alignRight style={{ width: '100%' }}>
+          <Dropdown.Toggle  onClick={toggleDropdown} variant="success" id="dropdown-basic">
+            Dropdown
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            <Dropdown.Item href="#/action-1">Action 1</Dropdown.Item>
+            <Dropdown.Item href="#/action-2">Action 2</Dropdown.Item>
+            <Dropdown.Item href="#/action-3">Action 3</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
         </Row>
         <Row>
 
@@ -479,7 +398,7 @@ function DashboardProposal(props) {
                 </CardTitle>
               </CardHeader>
               <CardBody>
-                <div className="chart-area" id="josethChart" style={{height: "400px"}}>
+                <div className="chart-area" id="customChart" style={{height: "400px"}}>
 
                 </div>
               </CardBody>
