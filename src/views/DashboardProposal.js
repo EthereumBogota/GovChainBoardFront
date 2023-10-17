@@ -968,13 +968,11 @@ function DashboardProposal(props) {
   return (
     <>
       <div className="content">
-
-
-        <Row>
+        <Row id='row__toggle' >
         {/* <button className="dropdown-toggle" onClick={toggleDropdown}>
           Toggle Dropdown
-        </button> */}
-        {/* <Dropdown show={isDropdownOpen}  alignright="true" style={{ width: '100%' }}>
+        </button>        
+        <Dropdown show={isDropdownOpen}  alignright="true" style={{ width: '100%' }}>
           <Dropdown.Toggle  onClick={toggleDropdown} variant="success" id="dropdown-basic">
             Proposal: Id o Nombre de proposal Dropdown
           </Dropdown.Toggle>
@@ -986,11 +984,11 @@ function DashboardProposal(props) {
         </Dropdown> */}
 
         <select class="form-select-propolal" aria-label="Default select example"
-          style={{ width: '100%' }}
           variant="success" id="dropdown-basic"
           value={selectedProposal.id_proposal} 
           className="dropdown-toggle" 
           onChange={handleDropdownProposalChange}
+          style={{backgroundColor: "#2e65e6"}}
         >
           {proposals_data.map((proposal, index) => (
             <option key={index} value={proposal.id_proposal}>{proposal.id_proposal}. {proposal.description}</option>

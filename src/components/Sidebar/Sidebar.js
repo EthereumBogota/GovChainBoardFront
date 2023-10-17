@@ -31,7 +31,7 @@ import {
   backgroundColors,
 } from "contexts/BackgroundColorContext";
 
-var ps;
+var ps; 
 
 function Sidebar(props) {
   const location = useLocation();
@@ -58,7 +58,7 @@ function Sidebar(props) {
     document.documentElement.classList.remove("nav-open");
   };
   const { routes, rtlActive, logo } = props;
-  logo.outterLink = "";
+  logo.outterLink = "/black-dashboard-react/landing/";
   logo.innerLink = "";
   logo.text = "GovChainBoard";
   let logoImg = null;
@@ -142,12 +142,6 @@ function Sidebar(props) {
                   </li>
                 );
               })}
-              <li className="active-pro">
-                <ReactstrapNavLink href="/upgrade-to-pro">
-                  <i className="tim-icons icon-spaceship" />
-                  <p>Upgrade to PRO</p>
-                </ReactstrapNavLink>
-              </li>
             </Nav>
           </div>
         </div>
