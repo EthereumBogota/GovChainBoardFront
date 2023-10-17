@@ -61,6 +61,10 @@
 @import "../../../node_modules/bootstrap/scss/utilities";
 @import "../../../node_modules/bootstrap/scss/print";
 
+// react-loginpage
+
+@import "./black-dashboard-react/react-loginpage/style_login.scss";
+
 // Custom components
 
 @import "black-dashboard-react/custom/alerts.scss";
