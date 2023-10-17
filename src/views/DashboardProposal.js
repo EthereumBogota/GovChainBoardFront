@@ -968,7 +968,7 @@ function DashboardProposal(props) {
   return (
     <>
       <div className="content">
-        <Row id='row__toggle'>
+        <Row id='row__toggle' >
         {/* <button className="dropdown-toggle" onClick={toggleDropdown}>
           Toggle Dropdown
         </button>        
@@ -988,6 +988,7 @@ function DashboardProposal(props) {
           value={selectedProposal.id_proposal} 
           className="dropdown-toggle" 
           onChange={handleDropdownProposalChange}
+          style={{backgroundColor: "#2e65e6"}}
         >
           {proposals_data.map((proposal, index) => (
             <option key={index} value={proposal.id_proposal}>{proposal.id_proposal}. {proposal.description}</option>

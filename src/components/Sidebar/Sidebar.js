@@ -31,7 +31,7 @@ import {
   backgroundColors,
 } from "contexts/BackgroundColorContext";
 
-var ps;
+var ps; 
 
 function Sidebar(props) {
   const location = useLocation();
