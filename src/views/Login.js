@@ -1,5 +1,5 @@
 import React from "react";
-import React, { useState } from "react";
+import { useState } from "react";
 import { MetaMaskButton } from "@metamask/sdk-react-ui";
 import { Card, CardHeader, CardBody, Row, Col } from "reactstrap";
 
@@ -22,7 +22,7 @@ function buttonLogIn(){
 										<Col className="font-icon-list col-xs-6 col-xs-6">
 											<div className=".main">
 												<div className="buttonLogIn">
-      										<MetaMaskButton theme={"light"} color="white"></MetaMaskButton>
+      										<MetaMaskButton theme={"dark"} color="black"></MetaMaskButton>
     										</div>
 											</div>
 										</Col>
