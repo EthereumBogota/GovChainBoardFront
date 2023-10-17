@@ -76,7 +76,7 @@ var routes = [
     path: "/chat",
     name: "Chat",
     rtlName: "",
-    icon: "tim-icons icon-world",
+    icon: "tim-icons icon-chat-33",
     component: <Chat />,
     layout: "/admin",
   },
