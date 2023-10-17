@@ -19,7 +19,6 @@ import React, { useEffect } from 'react';
 import Highcharts from 'highcharts';
 
 import DarkUnica from 'highcharts/themes/high-contrast-dark';
-DarkUnica(Highcharts);
 
 // import HighchartsReact from 'highcharts-react-official';
 
@@ -61,6 +60,7 @@ import {
   chartExample4
 } from "variables/charts.js";
 
+DarkUnica(Highcharts);
 
 
 function DashboardParticipant(props) {
