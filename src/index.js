@@ -45,11 +45,11 @@ root.render(
     <BackgroundColorWrapper>
       <BrowserRouter>
         <Routes>
-          <Route path="/dashboard/*" element={<AdminLayout />} />
-          {/* <Route path="/rtl/*" element={<RTLLayout />} /> */}
+          <Route path="/admin/*" element={<AdminLayout />} />
+          <Route path="/rtl/*" element={<RTLLayout />} />
           <Route
             path="*"
-            element={<Navigate to="/dashboard/proposal" replace />}
+            element={<Navigate to="/admin/proposal" replace />}
           />
         </Routes>
       </BrowserRouter>
