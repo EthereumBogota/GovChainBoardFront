@@ -6,7 +6,7 @@ npm start
 ```
 
 
-# Lnading Page
+# Lanading Page
 
 Dentro de la carpeta ```public/landing``` se colocara el código html, css y js de la landing page.
 
