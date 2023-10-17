@@ -1,0 +1,19 @@
+#row__toggle {
+  margin-right: 0;
+  margin-left: 0;
+}
+#row__toggle #dropdown-basic {
+  width: 100%;
+  padding: 4px;
+  color: white;
+  border-radius: 4px;
+  background-color: #27293d;
+  border: 1px solid #2e65e6;
+}
+#row__toggle #dropdown-basic:hover {
+  cursor: pointer;
+  border: 1px solid white;
+}
+#row__toggle #dropdown-basic:active, #row__toggle #dropdown-basic:focus {
+  border: none;
+}/*# sourceMappingURL=proposalDashboard.css.map */

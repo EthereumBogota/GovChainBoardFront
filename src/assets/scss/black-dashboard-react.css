@@ -10977,6 +10977,25 @@ a.text-darker:hover, a.text-darker:focus {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+#row__toggle {
+  margin-right: 0;
+  margin-left: 0;
+}
+#row__toggle #dropdown-basic {
+  width: 100%;
+  padding: 4px;
+  border-radius: 4px;
+  background-color: #27293d;
+  color: white;
+  border: 1px solid #2e65e6;
+}
+#row__toggle #dropdown-basic:focus option:hover {
+  background-color: red;
+}
+#row__toggle #dropdown-basic:focus option:focus {
+  background-color: purple;
+}
+
 .alert {
   border: 0;
   color: #ffffff;
