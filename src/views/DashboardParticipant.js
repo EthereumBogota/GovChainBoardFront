@@ -63,77 +63,7 @@ import {
 DarkUnica(Highcharts);
 
 
-function Dashboard(props) {
-  
-
-  const josethChart = {
-    chart: {
-      polar: true,
-      type: 'line'
-    },
-    title: {
-      text: 'Student Performance'
-    },
-    xAxis: {
-      categories: [
-        'Math 7',
-        'Physics 8',
-        'Chemistry 9',
-        'Biology 10',
-        'History 11',
-        'Geography 12',
-        'English 13',
-        'Art 14',
-        'Music 15',
-        'Physical Education 16',
-        'Computer Science 17',
-        'Social Studies 18'
-      ]
-    },
-    yAxis: {
-      min: 0,
-      title: {
-        text: 'Score'
-      }
-    },
-    series: [
-      {
-        name: 'Population',
-        data: [
-          85, 90, 88, 92, 80, 86, 82, 78, 84, 90, 88, 92
-        ]
-      },
-      {
-        name: '75th Percentile',
-        data: [
-          88, 92, 90, 94, 82, 88, 84, 80, 86, 92, 90, 94
-        ]
-      },
-      {
-        name: 'Average',
-        data: [
-          86, 88, 85, 90, 80, 84, 82, 78, 82, 88, 86, 90
-        ]
-      },
-      {
-        name: '25th Percentile',
-        data: [
-          82, 86, 82, 88, 78, 82, 80, 76, 78, 84, 82, 86
-        ]
-      },
-      {
-        name: 'Student',
-        data: [
-          90, 92, 86, 88, 84, 90, 92, 80, 86, 82, 88, 90
-        ],
-        pointPlacement: 'on',
-        color: 'red',
-        fillColor: 'rgba(255, 0, 0, 0.3)'
-      }
-    ]
-  }
-
-
+function DashboardParticipant(props) {
 
   useEffect(() => {
 
@@ -148,126 +78,92 @@ function Dashboard(props) {
     });
 
 
-    const danielChart = {
-      chart: {
-          type: 'bar'
-      },
+    const chartData = {
+
       title: {
-          text: 'Historic World Population by Region',
+          text: 'U.S Solar Employment Growth',
           align: 'left'
       },
+  
       subtitle: {
-          text: 'Source: <a ' +
-              'href="https://en.wikipedia.org/wiki/List_of_continents_and_continental_subregions_by_population"' +
-              'target="_blank">Wikipedia.org</a>',
+          text: 'By Job Category. Source: <a href="https://irecusa.org/programs/solar-jobs-census/" target="_blank">IREC</a>.',
           align: 'left'
       },
-      xAxis: {
-          categories: ['Africa', 'America', 'Asia', 'Europe', 'Oceania'],
-          title: {
-              text: null
-          },
-          gridLineWidth: 1,
-          lineWidth: 0
-      },
+  
       yAxis: {
-          min: 0,
           title: {
-              text: 'Population (millions)',
-              align: 'high'
-          },
-          labels: {
-              overflow: 'justify'
-          },
-          gridLineWidth: 0
-      },
-      tooltip: {
-          valueSuffix: ' millions'
-      },
-      plotOptions: {
-          bar: {
-              borderRadius: '50%',
-              dataLabels: {
-                  enabled: true
-              },
-              groupPadding: 0.1
+              text: 'Number of Employees'
           }
       },
+  
+      xAxis: {
+          accessibility: {
+              rangeDescription: 'Range: 2010 to 2020'
+          }
+      },
+  
       legend: {
           layout: 'vertical',
           align: 'right',
-          verticalAlign: 'top',
-          x: -40,
-          y: 80,
-          floating: true,
-          borderWidth: 1,
-          backgroundColor: Highcharts.defaultOptions.legend.backgroundColor || '#27293d',
-          shadow: true
+          verticalAlign: 'middle'
       },
-      credits: {
-          enabled: false
+  
+      plotOptions: {
+          series: {
+              label: {
+                  connectorAllowed: false
+              },
+              pointStart: 2010
+          }
       },
+  
       series: [{
-          name: 'Year 1990',
-          data: [631, 727, 3202, 721, 26]
+          name: 'Installation & Developers',
+          data: [43934, 48656, 65165, 81827, 112143, 142383,
+              171533, 165174, 155157, 161454, 154610]
       }, {
-          name: 'Year 2000',
-          data: [814, 841, 3714, 726, 31]
+          name: 'Manufacturing',
+          data: [24916, 37941, 29742, 29851, 32490, 30282,
+              38121, 36885, 33726, 34243, 31050]
       }, {
-          name: 'Year 2010',
-          data: [1044, 944, 4170, 735, 40]
+          name: 'Sales & Distribution',
+          data: [11744, 30000, 16005, 19771, 20185, 24377,
+              32147, 30912, 29243, 29213, 25663]
       }, {
-          name: 'Year 2018',
-          data: [1276, 1007, 4561, 746, 42]
-      }]
+          name: 'Operations & Maintenance',
+          data: [null, null, null, null, null, null, null,
+              null, 11164, 11218, 10077]
+      }, {
+          name: 'Other',
+          data: [21908, 5548, 8105, 11248, 8989, 11816, 18274,
+              17300, 13053, 11906, 10073]
+      }],
+  
+      responsive: {
+          rules: [{
+              condition: {
+                  maxWidth: 500
+              },
+              chartOptions: {
+                  legend: {
+                      layout: 'horizontal',
+                      align: 'center',
+                      verticalAlign: 'bottom'
+                  }
+              }
+          }]
+      }
+  
   }
-    Highcharts.chart('josethChart', danielChart);
+    Highcharts.chart('customChart', chartData);
   }, []);
 
-  const config = {
-    chart: {
-      type: 'treemap',
-    },
-    title: {
-      text: 'Sample Treemap Chart',
-    },
-    series: [
-      {
-        type: 'treemap',
-        layoutAlgorithm: 'squarified',
-        data: [
-          {
-            name: 'Category A',
-            value: 6,
-          },
-          {
-            name: 'Category B',
-            value: 4,
-          },
-          {
-            name: 'Category C',
-            value: 3,
-          },
-          // Add more data points as needed
-        ],
-      },
-    ],
-  };
-  // const setBgChartData = (name) => {
-  //   setbigChartData(name);
-  // };
+ 
   return (
-
+    <>
       <div className="content">
+
         <Row>
-
-          {/* <Col xs="12">
-            <div id="josethChart" style={{ width: '100%', height: '400px' }}></div>
-          </Col> */}
-
-        </Row>
-        <Row>
-
         <Col lg="12">
             <Card className="card-chart">
               <CardHeader>
@@ -277,7 +173,7 @@ function Dashboard(props) {
                 </CardTitle>
               </CardHeader>
               <CardBody>
-                <div className="chart-area" id="josethChart" style={{height: "400px"}}>
+                <div className="chart-area" id="customChart" style={{height: "400px"}}>
 
                 </div>
               </CardBody>
@@ -675,8 +571,8 @@ function Dashboard(props) {
           </Col>
         </Row>
       </div>
-
+    </>
   );
 }
 
-export default Dashboard;
+export default DashboardParticipant;

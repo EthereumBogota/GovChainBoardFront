@@ -17,9 +17,11 @@
 */
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { MetaMaskUIProvider } from '@metamask/sdk-react-ui';
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 import AdminLayout from "layouts/Admin/Admin.js";
+import App from './views/Login.js';
 import RTLLayout from "layouts/RTL/RTL.js";
 
 import "assets/scss/black-dashboard-react.scss";
@@ -33,7 +35,13 @@ import BackgroundColorWrapper from "./components/BackgroundColorWrapper/Backgrou
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  <ThemeContextWrapper>
+  <React.StrictMode>
+    <MetaMaskUIProvider sdkOptions={{
+      dappMetadata: {
+        name: "Demo UI React App",
+      }
+    }}>
+      <ThemeContextWrapper>
     <BackgroundColorWrapper>
       <BrowserRouter>
         <Routes>
@@ -47,4 +55,6 @@ root.render(
       </BrowserRouter>
     </BackgroundColorWrapper>
   </ThemeContextWrapper>
+    </MetaMaskUIProvider>
+  </React.StrictMode>,
 );
