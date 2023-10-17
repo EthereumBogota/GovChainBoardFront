@@ -22,6 +22,7 @@ import Rtl from "views/Rtl.js";
 import TableList from "views/TableList.js";
 import Typography from "views/Typography.js";
 import UserProfile from "views/UserProfile.js";
+import Login from "views/Login.js"
 
 import Dashboard from "views/Dashboard.js";
 import DashboardGeneral from "views/DashboardGeneral.js";
@@ -38,6 +39,15 @@ var routes = [
   //   component: <Dashboard />,
   //   layout: "/admin",
   // },
+  {
+
+    path: "/login",
+    name: "Login",
+    rtlName: "",
+    icon: "tim-icons icon-single-02",
+    component: <Login />,
+    layout: "/admin",
+  },
   {
     path: "/general",
     name: "DAO General",
