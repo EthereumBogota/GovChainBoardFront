@@ -20,9 +20,10 @@ import ReactDOM from "react-dom/client";
 import { MetaMaskUIProvider } from '@metamask/sdk-react-ui';
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
-import AdminLayout from "layouts/Admin/Admin.js";
+import DashboardLayout from "layouts/Dashboard/Dashboard.js";
 import App from './views/Login.js';
-import RTLLayout from "layouts/RTL/RTL.js";
+// import RTLLayout from "layouts/RTL/RTL.js";
+import Landing from "layouts/Landing.js"
 
 import "assets/scss/black-dashboard-react.scss";
 import "assets/demo/demo.css";
@@ -45,11 +46,12 @@ root.render(
     <BackgroundColorWrapper>
       <BrowserRouter>
         <Routes>
-          <Route path="/admin/*" element={<AdminLayout />} />
-          <Route path="/rtl/*" element={<RTLLayout />} />
+          <Route path="/dashboard/*" element={<DashboardLayout />} />
+          {/* <Route path="/rtl/*" element={<RTLLayout />} /> */}
+          <Route path="/landing/*" element={<Landing />} />
           <Route
             path="*"
-            element={<Navigate to="/admin/dashboard" replace />}
+            element={<Navigate to="/landing" replace />}
           />
         </Routes>
       </BrowserRouter>

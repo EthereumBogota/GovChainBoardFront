@@ -58,7 +58,7 @@ function Sidebar(props) {
     document.documentElement.classList.remove("nav-open");
   };
   const { routes, rtlActive, logo } = props;
-  logo.outterLink = "/black-dashboard-react/landing/";
+  logo.outterLink = "/landing/";
   logo.innerLink = "";
   logo.text = "GovChainBoard";
   let logoImg = null;

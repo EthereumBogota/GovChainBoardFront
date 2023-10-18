@@ -33,7 +33,7 @@ import { BackgroundColorContext } from "contexts/BackgroundColorContext";
 
 var ps;
 
-function Admin(props) {
+function Dashboard(props) {
   const location = useLocation();
   const mainPanelRef = React.useRef(null);
   const [sidebarOpened, setsidebarOpened] = React.useState(
@@ -80,7 +80,7 @@ function Admin(props) {
   };
   const getRoutes = (routes) => {
     return routes.map((prop, key) => {
-      if (prop.layout === "/admin") {
+      if (prop.layout === "/dashboard") {
         return (
           <Route path={prop.path} element={prop.component} key={key} exact />
         );
@@ -121,7 +121,7 @@ function Admin(props) {
                 {getRoutes(routes)}
                 <Route
                   path="/"
-                  element={<Navigate to="/admin/dashboard" replace />}
+                  element={<Navigate to="/dashboard/proposal" replace />}
                 />
               </Routes>
               {
@@ -136,4 +136,4 @@ function Admin(props) {
   );
 }
 
-export default Admin;
+export default Dashboard;

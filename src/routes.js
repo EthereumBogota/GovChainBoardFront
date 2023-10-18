@@ -37,7 +37,7 @@ var routes = [
   //   rtlName: "لوحة القيادة",
   //   icon: "tim-icons icon-chart-pie-36",
   //   component: <Dashboard />,
-  //   layout: "/admin",
+  //   layout: "/dashboard",
   // },
   {
 
@@ -46,7 +46,7 @@ var routes = [
     rtlName: "",
     icon: "tim-icons icon-single-02",
     component: <Login />,
-    layout: "/admin",
+    layout: "/dashboard",
   },
   // {
   //   path: "/general",
@@ -54,7 +54,7 @@ var routes = [
   //   rtlName: "",
   //   icon: "tim-icons icon-chart-pie-36",
   //   component: <DashboardGeneral />,
-  //   layout: "/admin",
+  //   layout: "/dashboard",
   // },
   {
     path: "/proposal",
@@ -62,7 +62,7 @@ var routes = [
     rtlName: "",
     icon: "tim-icons icon-chart-pie-36",
     component: <DashboardProposal />,
-    layout: "/admin",
+    layout: "/dashboard",
   },
   // {
   //   path: "/participant",
@@ -70,7 +70,7 @@ var routes = [
   //   rtlName: "",
   //   icon: "tim-icons icon-chart-pie-36",
   //   component: <DashboardParticipant />,
-  //   layout: "/admin",
+  //   layout: "/dashboard",
   // },
   {
     path: "/chat",
@@ -78,7 +78,7 @@ var routes = [
     rtlName: "",
     icon: "tim-icons icon-chat-33",
     component: <Chat />,
-    layout: "/admin",
+    layout: "/dashboard",
   },
   // {
   //   path: "/icons",
@@ -86,7 +86,7 @@ var routes = [
   //   rtlName: "الرموز",
   //   icon: "tim-icons icon-atom",
   //   component: <Icons />,
-  //   layout: "/admin",
+  //   layout: "/dashboard",
   // },
   // {
   //   path: "/map",
@@ -94,7 +94,7 @@ var routes = [
   //   rtlName: "خرائط",
   //   icon: "tim-icons icon-pin",
   //   component: <Map />,
-  //   layout: "/admin",
+  //   layout: "/dashboard",
   // },
   {
     path: "/notifications",
@@ -102,7 +102,7 @@ var routes = [
     rtlName: "إخطارات",
     icon: "tim-icons icon-bell-55",
     component: <Notifications />,
-    layout: "/admin",
+    layout: "/dashboard",
   },
   // {
   //   path: "/user-profile",
@@ -110,7 +110,7 @@ var routes = [
   //   rtlName: "ملف تعريفي للمستخدم",
   //   icon: "tim-icons icon-single-02",
   //   component: <UserProfile />,
-  //   layout: "/admin",
+  //   layout: "/dashboard",
   // },
   // {
   //   path: "/tables",
@@ -118,7 +118,7 @@ var routes = [
   //   rtlName: "قائمة الجدول",
   //   icon: "tim-icons icon-puzzle-10",
   //   component: <TableList />,
-  //   layout: "/admin",
+  //   layout: "/dashboard",
   // },
   // {
   //   path: "/typography",
@@ -126,7 +126,7 @@ var routes = [
   //   rtlName: "طباعة",
   //   icon: "tim-icons icon-align-center",
   //   component: <Typography />,
-  //   layout: "/admin",
+  //   layout: "/dashboard",
   // },
   // {
   //   path: "/rtl-support",
