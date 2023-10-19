@@ -21,9 +21,8 @@ import { MetaMaskUIProvider } from '@metamask/sdk-react-ui';
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 import DashboardLayout from "layouts/Dashboard/Dashboard.js";
-import App from './views/Login.js';
 // import RTLLayout from "layouts/RTL/RTL.js";
-import Landing from "layouts/Landing.js"
+import Landing from "layouts/Landing_Page/Landing.js"
 
 import "assets/scss/black-dashboard-react.scss";
 import "assets/demo/demo.css";
