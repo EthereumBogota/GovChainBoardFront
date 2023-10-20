@@ -20,6 +20,11 @@ import ReactDOM from "react-dom/client";
 import { MetaMaskUIProvider } from '@metamask/sdk-react-ui';
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
+
+import { Provider } from 'react-redux'
+import store from './store'
+
+
 import DashboardLayout from "layouts/Dashboard/Dashboard.js";
 import Landing from "layouts/Landing_Page/Landing.js"
 
@@ -35,6 +40,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
+    <Provider store={store}>
     <MetaMaskUIProvider sdkOptions={{
       dappMetadata: {
         name: "Demo UI React App",
@@ -56,5 +62,6 @@ root.render(
     </BackgroundColorWrapper>
   </ThemeContextWrapper>
     </MetaMaskUIProvider>
+    </Provider>
   </React.StrictMode>,
 );

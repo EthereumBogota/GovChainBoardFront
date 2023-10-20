@@ -33,7 +33,15 @@ import {
 
 var ps; 
 
+
+import { useSelector, useDispatch } from 'react-redux'
+
+
 function Sidebar(props) {
+  // IS TRUE IF IS LOGGED
+  const logged = useSelector((state) => state.logged.value)
+
+
   const location = useLocation();
   const sidebarRef = React.useRef(null);
   // verifies if routeName is the one active (in browser input)
@@ -58,7 +66,7 @@ function Sidebar(props) {
     document.documentElement.classList.remove("nav-open");
   };
   const { routes, rtlActive, logo } = props;
-  logo.outterLink = "/Landing_Page/";
+  logo.outterLink = "/landing/";
   logo.innerLink = "";
   logo.text = "GovChainBoard";
   let logoImg = null;
@@ -122,8 +130,10 @@ function Sidebar(props) {
               </div>
             ) : null}
             <Nav>
+              {logged ? <p style={{backgroundColor: "black"}}>Logged</p>:<p style={{backgroundColor: "black"}}>not logged</p>}
               {routes.map((prop, key) => {
-                if (prop.redirect) return null;
+                
+                if (prop.isPrivate) return null;
                 return (
                   <li
                     className={

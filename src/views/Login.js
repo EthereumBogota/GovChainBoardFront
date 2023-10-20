@@ -1,39 +1,32 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
-import SidebarComponent from"./Sidebar/Sidebar.js"
-import { MetaMaskButton, MetaMaskUIProvider } from "@metamask/sdk-react-ui";
+import { MetaMaskButton } from "@metamask/sdk-react-ui";
 import { Card, CardHeader, CardBody, Row, Col } from "reactstrap";
 
-function ButtonLogIn(){
-	const [isMetaMaskInstalled, setIsMetaMaskInstalled] = useState(false);
-  	const [isWalletConnected, setIsWalletConnected] = useState(false);
+import { useSelector, useDispatch } from 'react-redux'
 
-	useEffect(() => {
-		if(window.ethereum){
-			setIsMetaMaskInstalled(true);
-		}
-	}, []);
+import {setLogged, setUnlogged} from 'features/login/loginSlice'
 
-	const checkWalletConnetion = async () => {
-		if(window.ethereum){
-			try{
-				await window.ethereum.request({ method: 'eth_requestAccounts' });
-				setIsWalletConnected(true);
-			} catch(error){
-				alert(error);
-			}
-		}
-	};
 
+function Login(){
+
+	const logged = useSelector((state) => state.logged.value) // guarda valor de si esta logeado
+  	const dispatch = useDispatch() // se usa para cambiar el valor de si está logeado
+
+	// const [isWalletConnected, setIsWalletConnected] = useState(false);
+	// const checkWalletConnetion = async () => {
+	// 	if(window.ethereum){
+	// 		try{
+	// 			await window.ethereum.request({ method: 'eth_requestAccounts' });
+	// 			setIsWalletConnected(true);
+	// 			console.log("connected")
+				
+	// 		} catch(error){
+	// 			alert(error);
+	// 		}
+	// 	}
+	// };
     return(
-		<MetaMaskUIProvider sdkOptions={{
-			logging:{
-				developerMode: false,
-			},
-			dappMetadata: {
-			  name: "Demo UI React App",
-			}
-		  }}>
 			<>
 				<div className="content">
 					<Row>
@@ -43,49 +36,42 @@ function ButtonLogIn(){
 										<h5 className="title">Conecta tu wallet</h5>
 										<p className="category">
 										De esta manera tendras acceso total a toda nuestra Dapp, ¿que esperas?.
+										{/* <a href="https://nucleoapp.com/?ref=1712">NucleoApp</a> */}
 										</p>
 								</CardHeader>
-								{isMetaMaskInstalled ? (
-        						isWalletConnected ? (
-									null
-        						) : (
-									<>
-										<CardBody className="all-icons">
-											<Row>
-												<Col className="font-icon-list col-xs-6 col-xs-6">
-													<div className=".main">
-														<div className="buttonLogIn">
-															<MetaMaskButton onClick={checkWalletConnetion} theme={"dark"} color="black"></MetaMaskButton>
-														</div>
-													</div>
-												</Col>
-											</Row>
-										</CardBody>
-										<SidebarComponent>
-											<div className="sidebar"></div>
-										</SidebarComponent>
-									</>
-        							)
-      							) : (
-									<>
-										<CardHeader>
-											<h5 className="title">Ups hubo un error</h5>
-											<p className="category">
-											Instala la extencion de metamask o ingresa tu billetera para disfrutar de las grandes caracteristica de esta Dapp
-											</p>
-										</CardHeader>
-										<SidebarComponent>
-											<div className="sidebarInactive"></div>
-										</SidebarComponent>
-									</>
-      								)}
+								<CardBody className="all-icons">
+									<Row>
+										<Col className="font-icon-list col-xs-6 col-xs-6">
+											<div className=".main">
+												<div className="buttonLogIn">
+      										<MetaMaskButton theme={"dark"} 
+											// onClick={checkWalletConnetion}
+											
+											 color="black"></MetaMaskButton>
+    										</div>
+											</div>
+										</Col>
+									</Row>
+									<br/>
+									<button style={{backgroundColor: "white"}} 
+									onClick={() => {logged? dispatch(setUnlogged()) : dispatch(setLogged())}}>
+										{logged? "Click me to Log Out": "Click me to Login" }
+									</button>
+								</CardBody>
+								<p>
+									<strong>TODO: </strong>
+									<br/>
+									<br/>- Cuando se recage la pagina revisar con un useEffect si ya esta logeado y en dado caso dispatch(setLogged())
+									<br/>- Cuando haga login redireccionar a /dashboard/proposal
+									<br/>- cuando haga login mostrar demas tabs de la barra lateral y cambiar login por logout (poner logica correspondiente que le informe a metamas que se logout) 
+									<br/>- cuando no este logeado configurar para que desde ninguna ruta ejm si va a /dashboard/proposal vea nada! ahorita solo esconde los links pero la idea es que si va a esa ruta no se vea nada
+								</p>
 							</Card>
 						</Col>
 					</Row>
 				</div>
 			</>
-		</MetaMaskUIProvider>
     );
 }
 
-export default ButtonLogIn;
+export default Login;

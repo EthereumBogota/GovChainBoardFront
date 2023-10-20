@@ -38,6 +38,8 @@ var routes = [
   //   icon: "tim-icons icon-chart-pie-36",
   //   component: <Dashboard />,
   //   layout: "/dashboard",
+    //   isPrivate: true,
+
   // },
   {
 
@@ -47,6 +49,9 @@ var routes = [
     icon: "tim-icons icon-single-02",
     component: <Login />,
     layout: "/dashboard",
+    isPrivate: false,
+    // redirect: true,
+
   },
   // {
   //   path: "/general",
@@ -55,6 +60,8 @@ var routes = [
   //   icon: "tim-icons icon-chart-pie-36",
   //   component: <DashboardGeneral />,
   //   layout: "/dashboard",
+    //   isPrivate: true,
+
   // },
   {
     path: "/proposal",
@@ -63,6 +70,7 @@ var routes = [
     icon: "tim-icons icon-chart-pie-36",
     component: <DashboardProposal />,
     layout: "/dashboard",
+    isPrivate: true,
   },
   // {
   //   path: "/participant",
@@ -71,6 +79,8 @@ var routes = [
   //   icon: "tim-icons icon-chart-pie-36",
   //   component: <DashboardParticipant />,
   //   layout: "/dashboard",
+    //   isPrivate: true,
+
   // },
   {
     path: "/chat",
@@ -79,6 +89,7 @@ var routes = [
     icon: "tim-icons icon-chat-33",
     component: <Chat />,
     layout: "/dashboard",
+    isPrivate: true,
   },
   // {
   //   path: "/icons",
@@ -87,6 +98,8 @@ var routes = [
   //   icon: "tim-icons icon-atom",
   //   component: <Icons />,
   //   layout: "/dashboard",
+    //   isPrivate: true,
+
   // },
   // {
   //   path: "/map",
@@ -95,6 +108,8 @@ var routes = [
   //   icon: "tim-icons icon-pin",
   //   component: <Map />,
   //   layout: "/dashboard",
+    //   isPrivate: true,
+
   // },
   {
     path: "/notifications",
@@ -103,6 +118,7 @@ var routes = [
     icon: "tim-icons icon-bell-55",
     component: <Notifications />,
     layout: "/dashboard",
+    isPrivate: true,
   },
   // {
   //   path: "/user-profile",
@@ -111,6 +127,8 @@ var routes = [
   //   icon: "tim-icons icon-single-02",
   //   component: <UserProfile />,
   //   layout: "/dashboard",
+    //   isPrivate: true,
+
   // },
   // {
   //   path: "/tables",
@@ -119,6 +137,8 @@ var routes = [
   //   icon: "tim-icons icon-puzzle-10",
   //   component: <TableList />,
   //   layout: "/dashboard",
+    //   isPrivate: true,
+
   // },
   // {
   //   path: "/typography",
@@ -127,6 +147,7 @@ var routes = [
   //   icon: "tim-icons icon-align-center",
   //   component: <Typography />,
   //   layout: "/dashboard",
+  //   isPrivate: true,
   // },
   // {
   //   path: "/rtl-support",
@@ -135,6 +156,7 @@ var routes = [
   //   icon: "tim-icons icon-world",
   //   component: <Rtl />,
   //   layout: "/rtl",
+  //   isPrivate: true,
   // },
 ];
 export default routes;
