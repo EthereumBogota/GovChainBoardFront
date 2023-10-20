@@ -58,7 +58,7 @@ function Sidebar(props) {
     document.documentElement.classList.remove("nav-open");
   };
   const { routes, rtlActive, logo } = props;
-  logo.outterLink = "/landing/";
+  logo.outterLink = "/Landing_Page/";
   logo.innerLink = "";
   logo.text = "GovChainBoard";
   let logoImg = null;
@@ -69,7 +69,7 @@ function Sidebar(props) {
         <a
           href={logo.outterLink}
           className="simple-text logo-mini"
-          target="_blank"
+          target=""
           onClick={props.toggleSidebar}
         >
           <div className="logo-img">
@@ -113,7 +113,7 @@ function Sidebar(props) {
   return (
     <BackgroundColorContext.Consumer>
       {({ color }) => (
-        <div className="sidebar" data={color}>
+        <div className="sidebar sidebarInactive" data={color}>
           <div className="sidebar-wrapper" ref={sidebarRef}>
             {logoImg !== null || logoText !== null ? (
               <div className="logo">

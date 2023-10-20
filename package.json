@@ -21,7 +21,8 @@
     "react-notification-alert": "0.0.13",
     "react-router-dom": "6.11.1",
     "react-scripts": "5.0.1",
-    "sass": "1.62.1"
+    "sass": "1.62.1",
+    "web3": "^4.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
