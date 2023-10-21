@@ -946,11 +946,11 @@ select:disabled {
 }
 
 button,
-[type=button],
+/* [type=button],
 [type=reset],
 [type=submit] {
   -webkit-appearance: button;
-}
+} */
 button:not(:disabled),
 [type=button]:not(:disabled),
 [type=reset]:not(:disabled),
@@ -1007,7 +1007,7 @@ legend + * {
 
 [type=search] {
   outline-offset: -2px;
-  -webkit-appearance: textfield;
+  /* -webkit-appearance: textfield; */
 }
 
 [type="tel"],
@@ -3667,8 +3667,7 @@ textarea.form-control-lg {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  -webkit-print-color-adjust: exact;
-  color-adjust: exact;
+  /* -webkit-print-color-adjust: exact; */
 }
 .form-check-input[type=checkbox] {
   border-radius: 0.25em;
@@ -5080,21 +5079,22 @@ textarea.form-control-lg {
   padding: 0.25rem 1rem;
   clear: both;
   font-weight: 400;
-  color: var(--fg-dropdown-link-color);
   text-align: inherit;
   white-space: nowrap;
   background-color: transparent;
   border: 0;
 }
 .dropdown-item:hover, .dropdown-item:focus {
-  color: var(--fg-dropdown-link-hover-color);
+  color: var(--fg-navbar-vertical-hr-color);
   text-decoration: none;
-  background-color: var(--fg-dropdown-link-hover-bg);
+  border-radius: 4px;
+  background-color: var(--fg-pagination-hover-border-color);
 }
 .dropdown-item.active, .dropdown-item:active {
-  color: var(--fg-dropdown-link-active-color);
+  color: var(--fg-navbar-vertical-hr-color);
   text-decoration: none;
-  background-color: var(--fg-dropdown-link-active-bg);
+  border-radius: 4px;
+  background-color: var(--fg-pagination-hover-border-color);
 }
 .dropdown-item.disabled, .dropdown-item:disabled {
   color: var(--fg-dropdown-link-disabled-color);
@@ -9910,10 +9910,6 @@ textarea.form-control-lg {
 
 .bg-1100 {
   background-color: #0A2640 !important;
-}
-
-.bg-white {
-  background-color: #ffffff !important;
 }
 
 .bg-primary {
@@ -20047,7 +20043,7 @@ textarea.form-control-lg {
 /*-----------------------------------------------
 |   Reboot
 -----------------------------------------------*/
-::-webkit-input-placeholder {
+/* ::-webkit-input-placeholder {
   opacity: 1;
   color: var(--#000000100);
 }
@@ -20066,7 +20062,7 @@ textarea.form-control-lg {
 ::placeholder {
   opacity: 1;
   color: var(--#000000100);
-}
+} */
 
 html {
   scroll-behavior: smooth;

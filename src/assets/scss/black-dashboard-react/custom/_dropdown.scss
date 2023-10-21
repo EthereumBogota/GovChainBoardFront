@@ -354,6 +354,8 @@
 
 @media screen and (min-width: 992px){
   .dropdown-menu .dropdown-item{
-      color: $dark-gray;
+    border: 1px solid #00000073;
+    border-radius: 8px;
+    color: #fff;
   }
 }

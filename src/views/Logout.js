@@ -28,7 +28,12 @@ function Logout(){
 	// 	}
 	// };
 	
-
+	// useEffect(() => {
+	// 	if(connected){
+	// 		// navigate('/dashboard/proposal')
+	// 		navigate("/dashboard/proposal");
+	// 	}
+	//   }, [connected]);
 
 
     return(

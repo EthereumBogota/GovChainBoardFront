@@ -35,13 +35,18 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import ThemeContextWrapper from "./components/ThemeWrapper/ThemeWrapper";
 import BackgroundColorWrapper from "./components/BackgroundColorWrapper/BackgroundColorWrapper";
+// import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const client = new QueryClient();
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      
+    <QueryClientProvider client={client}>      
     <MetaMaskUIProvider sdkOptions={{
       dappMetadata: {
         name: "Demo UI React App",
@@ -63,6 +68,8 @@ root.render(
     </BackgroundColorWrapper>
   </ThemeContextWrapper>
     </MetaMaskUIProvider>
+    </QueryClientProvider>
+
     </Provider>
   </React.StrictMode>,
 );

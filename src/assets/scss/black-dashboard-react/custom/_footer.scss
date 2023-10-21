@@ -5,11 +5,16 @@
       padding: 0;
     }
 
+      .container-fluid{
+        display: grid;
+        place-items: center;
+        gap: 10px;
+        text-align: center;
+      }
+
     .nav{
         display: inline-block;
-        float: left;
         margin-bottom: 0;
-        padding-left: 30px;
         list-style: none;
     }
 
@@ -54,8 +59,7 @@
     padding-left: 0px;
 
     .copyright {
-      text-align: right;
-      margin-right: 15px;
+      text-align: center;
     }
   }
 }
