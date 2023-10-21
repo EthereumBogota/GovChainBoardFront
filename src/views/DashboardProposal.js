@@ -980,7 +980,7 @@ const getVoteDistributionData = () => {
 //   return request(endpoint, query_votes);
 // });
 // return "Loading...";
-if (!votesData || !proposalsData) return "Loading...";
+if (!votesData || !proposalsData) return <div><br></br><br></br>"Loading..."</div>;
 // if (votes_error) return <pre>{votes_error.message}</pre>;
 
 
@@ -1129,6 +1129,14 @@ if (!votesData || !proposalsData) return "Loading...";
                       {/* {error && <strong>Ups... Algo salió mal. {error.message}</strong>}
                       {data?.map((user, key) => (<strong key={key}>{user.proposalId}</strong>))} */}
                     </div>
+                </div>
+              </CardBody>
+            </Card>
+          </Col>
+          <Col lg="4">
+            <Card className="card-chart">
+              <CardBody>
+                <div className="chart-area" id="voteDistribution_weight" style={{height: "400px"}}>
                 </div>
               </CardBody>
             </Card>
