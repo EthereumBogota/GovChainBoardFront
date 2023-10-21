@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import {setLogged, setUnlogged} from 'features/login/loginSlice'
 import { useNavigate } from "react-router-dom";
 
-function Login(){
+function Logout(){
     const navigate = useNavigate();
 
 	const logged = useSelector((state) => state.logged.value) // guarda valor de si esta logeado
@@ -28,12 +28,7 @@ function Login(){
 	// 	}
 	// };
 	
-	useEffect(() => {
-		if(connected){
-			// navigate('/dashboard/proposal')
-			navigate("/dashboard/proposal");
-		}
-	  }, [connected]);
+
 
 
     return(
@@ -43,9 +38,9 @@ function Login(){
 						<Col md="12">
 							<Card id="card__style">
 								<CardHeader>
-										<h5 className="title">Conecta tu wallet</h5>
+										<h5 className="title">Wallet:</h5>
 										<p className="category">
-										De esta manera tendras acceso total a toda nuestra Dapp, ¿que esperas?.
+										{/* De esta manera tendras acceso total a toda nuestra Dapp, ¿que esperas?. */}
 										{/* <a href="https://nucleoapp.com/?ref=1712">NucleoApp</a> */}
 										</p>
 								</CardHeader>
@@ -68,7 +63,7 @@ function Login(){
 										{connected? "Click me to Log Out": "Click me to Login" }
 									</button> */}
 								</CardBody>
-				
+
 							</Card>
 						</Col>
 					</Row>
@@ -77,4 +72,4 @@ function Login(){
     );
 }
 
-export default Login;
+export default Logout;

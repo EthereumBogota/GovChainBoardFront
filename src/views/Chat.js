@@ -27,8 +27,14 @@ import {
   Row,
   Col,
 } from "reactstrap";
+import { useSDK } from "@metamask/sdk-react-ui";
 
 function Chat() {
+  const { connected } = useSDK();
+
+  if (!connected) {
+    return (<div>You need to Sign In First!</div>)
+  }
   return (
     <>
       <div className="content">

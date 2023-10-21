@@ -59,11 +59,14 @@ import {
   chartExample3,
   chartExample4
 } from "variables/charts.js";
+import { useSDK } from "@metamask/sdk-react-ui";
 
 DarkUnica(Highcharts);
 
 
 function DashboardParticipant(props) {
+
+  const { connected } = useSDK();
 
   useEffect(() => {
 
@@ -158,7 +161,6 @@ function DashboardParticipant(props) {
     Highcharts.chart('customChart', chartData);
   }, []);
 
- 
   return (
     <>
       <div className="content">

@@ -59,12 +59,14 @@ import {
   chartExample3,
   chartExample4
 } from "variables/charts.js";
+import { useSDK } from "@metamask/sdk-react-ui";
 
 DarkUnica(Highcharts);
 
 
 function DashboardGeneral(props) {
-  
+  const { connected } = useSDK();
+
   useEffect(() => {
 
 
@@ -156,6 +158,7 @@ function DashboardGeneral(props) {
   // const setBgChartData = (name) => {
   //   setbigChartData(name);
   // };
+
   return (
 
       <div className="content">

@@ -65,6 +65,10 @@ import { Dropdown } from 'react-bootstrap';
 
 import { useState } from 'react';
 import HC_more from 'highcharts/highcharts-more' //module
+import { useSDK } from "@metamask/sdk-react-ui";
+
+
+
 HC_more(Highcharts) //init module
 DarkUnica(Highcharts);
 
@@ -81,6 +85,8 @@ function DashboardProposal(props) {
   //   beginDate: string;
   //   endDate: string;
   // };
+  const { sdk, connected, connecting, provider, chainId } = useSDK();
+
   const [selectedProposal, setSelectedProposal] = useState({}); // useState<Partial<Proposal>>({}); 
   
 
@@ -963,6 +969,7 @@ function DashboardProposal(props) {
     Highcharts.chart('lineChart', lineChart);
 
   }, []);
+
 
 
   return (

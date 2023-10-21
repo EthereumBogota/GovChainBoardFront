@@ -14557,6 +14557,11 @@ hr {
   margin-left: 25px;
 }
 
+.sidebarInactive{
+  display: none;
+  opacity: 0;
+}
+
 .sidebar,
 .off-canvas-sidebar {
   background: #ba54f5;

@@ -31,9 +31,20 @@ import routes from "routes.js";
 import logo from "assets/img/react-logo.png";
 import { BackgroundColorContext } from "contexts/BackgroundColorContext";
 
+import { useSelector } from 'react-redux'
+import { useSDK } from "@metamask/sdk-react-ui";
+
 var ps;
 
+
+
+
 function Dashboard(props) {
+
+  const { connected } = useSDK();
+
+  const logged = useSelector((state) => state.logged.value)
+
   const location = useLocation();
   const mainPanelRef = React.useRef(null);
   const [sidebarOpened, setsidebarOpened] = React.useState(
@@ -81,8 +92,11 @@ function Dashboard(props) {
   const getRoutes = (routes) => {
     return routes.map((prop, key) => {
       if (prop.layout === "/dashboard") {
+        if(connected){
+          return (<Route path={prop.path} element={prop.component} key={key} exact />)
+        }
         return (
-          <Route path={prop.path} element={prop.component} key={key} exact />
+          <Route path={prop.path} element={prop.componentUnlogged} key={key} exact />
         );
       } else {
         return null;
@@ -105,8 +119,8 @@ function Dashboard(props) {
             <Sidebar
               routes={routes}
               logo={{
-                outterLink: "https://www.creative-tim.com/",
-                text: "Creative Tim",
+                outterLink: "/",
+                text: "GovChainBoard",
                 imgSrc: logo,
               }}
               toggleSidebar={toggleSidebar}
@@ -121,7 +135,7 @@ function Dashboard(props) {
                 {getRoutes(routes)}
                 <Route
                   path="/"
-                  element={<Navigate to="/dashboard/proposal" replace />}
+                  element={<Navigate to={logged ? "/dashboard/proposal": "/dashboard/user"} replace />}
                 />
               </Routes>
               {
