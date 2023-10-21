@@ -31,8 +31,13 @@ import {
   Row,
   Col,
 } from "reactstrap";
+import { useSDK } from "@metamask/sdk-react-ui";
 
 function Notifications() {
+  const { connected } = useSDK();
+
+
+
   const notificationAlertRef = React.useRef(null);
   const notify = (place) => {
     var color = Math.floor(Math.random() * 5 + 1);
@@ -73,6 +78,7 @@ function Notifications() {
     };
     notificationAlertRef.current.notificationAlert(options);
   };
+
   return (
     <>
       <div className="content">

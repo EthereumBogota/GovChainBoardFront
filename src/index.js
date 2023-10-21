@@ -41,6 +41,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
+      
     <MetaMaskUIProvider sdkOptions={{
       dappMetadata: {
         name: "Demo UI React App",

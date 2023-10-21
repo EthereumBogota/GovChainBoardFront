@@ -32,6 +32,7 @@ import logo from "assets/img/react-logo.png";
 import { BackgroundColorContext } from "contexts/BackgroundColorContext";
 
 import { useSelector } from 'react-redux'
+import { useSDK } from "@metamask/sdk-react-ui";
 
 var ps;
 
@@ -39,6 +40,9 @@ var ps;
 
 
 function Dashboard(props) {
+
+  const { connected } = useSDK();
+
   const logged = useSelector((state) => state.logged.value)
 
   const location = useLocation();
@@ -88,8 +92,11 @@ function Dashboard(props) {
   const getRoutes = (routes) => {
     return routes.map((prop, key) => {
       if (prop.layout === "/dashboard") {
+        if(connected){
+          return (<Route path={prop.path} element={prop.component} key={key} exact />)
+        }
         return (
-          <Route path={prop.path} element={prop.component} key={key} exact />
+          <Route path={prop.path} element={prop.componentUnlogged} key={key} exact />
         );
       } else {
         return null;
@@ -128,7 +135,7 @@ function Dashboard(props) {
                 {getRoutes(routes)}
                 <Route
                   path="/"
-                  element={<Navigate to={logged ? "/dashboard/proposal": "/dashboard/login"} replace />}
+                  element={<Navigate to={logged ? "/dashboard/proposal": "/dashboard/user"} replace />}
                 />
               </Routes>
               {

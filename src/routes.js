@@ -28,6 +28,7 @@ import Dashboard from "views/Dashboard.js";
 import DashboardGeneral from "views/DashboardGeneral.js";
 import DashboardProposal from "views/DashboardProposal.js";
 import DashboardParticipant from "views/DashboardParticipant.js";
+import Logout from "views/Logout.js";
 import Chat from "views/Chat.js"
 
 var routes = [
@@ -37,17 +38,20 @@ var routes = [
   //   rtlName: "لوحة القيادة",
   //   icon: "tim-icons icon-chart-pie-36",
   //   component: <Dashboard />,
+  // componentUnlogged: <Login />,
+
   //   layout: "/dashboard",
-    //   isPrivate: true,
+    // //   isPrivate: true,
 
   // },
   {
 
-    path: "/login",
-    name: "Login",
+    path: "/user",
+    name: "User",
     rtlName: "",
     icon: "tim-icons icon-single-02",
-    component: <Login />,
+    component: <Logout />,
+    componentUnlogged: <Login />,
     layout: "/dashboard",
     isPrivate: false,
     // redirect: true,
@@ -59,8 +63,10 @@ var routes = [
   //   rtlName: "",
   //   icon: "tim-icons icon-chart-pie-36",
   //   component: <DashboardGeneral />,
+  // componentUnlogged: <Login />,
+
   //   layout: "/dashboard",
-    //   isPrivate: true,
+    // //   isPrivate: true,
 
   // },
   {
@@ -69,6 +75,7 @@ var routes = [
     rtlName: "",
     icon: "tim-icons icon-chart-pie-36",
     component: <DashboardProposal />,
+    componentUnlogged: <Login />,
     layout: "/dashboard",
     isPrivate: true,
   },
@@ -78,6 +85,7 @@ var routes = [
   //   rtlName: "",
   //   icon: "tim-icons icon-chart-pie-36",
   //   component: <DashboardParticipant />,
+  // componentUnlogged: <Login />,
   //   layout: "/dashboard",
     //   isPrivate: true,
 
@@ -88,6 +96,7 @@ var routes = [
     rtlName: "",
     icon: "tim-icons icon-chat-33",
     component: <Chat />,
+    componentUnlogged: <Login />,
     layout: "/dashboard",
     isPrivate: true,
   },
@@ -98,7 +107,7 @@ var routes = [
   //   icon: "tim-icons icon-atom",
   //   component: <Icons />,
   //   layout: "/dashboard",
-    //   isPrivate: true,
+    // //   isPrivate: true,
 
   // },
   // {
@@ -108,7 +117,7 @@ var routes = [
   //   icon: "tim-icons icon-pin",
   //   component: <Map />,
   //   layout: "/dashboard",
-    //   isPrivate: true,
+    // //   isPrivate: true,
 
   // },
   {
@@ -117,6 +126,7 @@ var routes = [
     rtlName: "إخطارات",
     icon: "tim-icons icon-bell-55",
     component: <Notifications />,
+    componentUnlogged: <Login />,
     layout: "/dashboard",
     isPrivate: true,
   },
@@ -127,7 +137,7 @@ var routes = [
   //   icon: "tim-icons icon-single-02",
   //   component: <UserProfile />,
   //   layout: "/dashboard",
-    //   isPrivate: true,
+    // //   isPrivate: true,
 
   // },
   // {
@@ -137,7 +147,7 @@ var routes = [
   //   icon: "tim-icons icon-puzzle-10",
   //   component: <TableList />,
   //   layout: "/dashboard",
-    //   isPrivate: true,
+    // //   isPrivate: true,
 
   // },
   // {
@@ -147,7 +157,7 @@ var routes = [
   //   icon: "tim-icons icon-align-center",
   //   component: <Typography />,
   //   layout: "/dashboard",
-  //   isPrivate: true,
+  // //   isPrivate: true,
   // },
   // {
   //   path: "/rtl-support",
@@ -156,7 +166,7 @@ var routes = [
   //   icon: "tim-icons icon-world",
   //   component: <Rtl />,
   //   layout: "/rtl",
-  //   isPrivate: true,
+  // //   isPrivate: true,
   // },
 ];
 export default routes;
