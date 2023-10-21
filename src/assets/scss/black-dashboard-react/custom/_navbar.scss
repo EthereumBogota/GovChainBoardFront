@@ -39,7 +39,7 @@
     background: $navbar-color;
   }
 
-  &.bg-white{
+  /* &.bg-white{
     .navbar-nav{
       .search-bar.input-group{
         i{
@@ -73,7 +73,7 @@
       color: $dark-gray !important;
     }
 
-  }
+  } */
 
   &.bg-dark {
     background: $black !important;
@@ -220,8 +220,11 @@
             }
             .dropdown-menu{
               .dropdown-item{
-                margin-top: 0;
+                margin-top: 4px;
                 padding-left: 24px;
+                border-radius: 8px;
+                color: #fff;
+                border: 1px solid #ffffff70;
               }
             }
           }
