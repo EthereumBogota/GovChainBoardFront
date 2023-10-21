@@ -76,7 +76,7 @@ function DashboardProposal(props) {
     "TrueFi": "https://api.studio.thegraph.com/query/54390/truefi-governor/version/latest",
     "ENS DAO": "https://api.studio.thegraph.com/query/54390/ens-dao/version/latest",
   }
-  const [selectedContract, setSelectedContract] = useState(Object.entries(contract_endpoints)[0][0]); // useState<Partial<Contract>>({});
+  const [selectedContract, setSelectedContract] = useState(Object.entries(contract_endpoints)[2][0]); // useState<Partial<Contract>>({});
   // setSelectedContract(Object.entries(contract_endpoints)[0][0]);
 
   // let endpoint = "https://api.studio.thegraph.com/query/54390/truefi-governor/version/latest"
@@ -508,19 +508,79 @@ function DashboardProposal(props) {
 const getVoteDistributionData = () => {
   
   let for_votes = 0;
+  let for_votes_weight = 0;
   let against_votes = 0;
+  let against_votes_weight = 0;
   let abstain_votes = 0;
+  let abstain_votes_weight = 0;
   votesData.forEach(vote => {
     if(vote.support === 1){
       for_votes += 1;
+      for_votes_weight += parseFloat(vote.weight);
+
     }else if(vote.support === 0){
       against_votes += 1;
+      against_votes_weight += parseFloat(vote.weight);
     }else{
       abstain_votes += 1;
+      abstain_votes_weight += parseFloat(vote.weight);
     }
   });
-  return [[for_votes], [against_votes], [abstain_votes]];
+  // console.log([[for_votes, for_votes_weight], [against_votes, against_votes_weight], [abstain_votes, abstain_votes_weight]]);
+  return [[for_votes, for_votes_weight], [against_votes, against_votes_weight], [abstain_votes, abstain_votes_weight], [for_votes+against_votes+abstain_votes, for_votes_weight+against_votes_weight+abstain_votes_weight]];
 }
+
+
+
+  const initializeArrayWithZeros = (length) => {
+    let newArray = [];
+    for (let i = 0; i < length; i++) {
+      newArray.push(0);
+    }
+    console.log("new array", newArray)
+    return newArray;
+  }
+
+  const getAreaChartData = () => {
+    let max_vote_weight = 0;
+    let min_vote_weight = 0;
+    // define the max and min vote weight
+    votesData.forEach(vote => {
+      if(parseFloat(vote.weight) > max_vote_weight){
+        max_vote_weight = parseFloat(vote.weight);
+      }
+      if(parseFloat(vote.weight) < min_vote_weight){
+        min_vote_weight = parseFloat(vote.weight);
+      }
+    });
+
+    let bins = 10;
+    // for each bean, count the number of votes
+    let bin_size = parseInt((max_vote_weight - min_vote_weight)/bins);
+    // bin_size = bin_size === 0 ? 1 : bin_size;
+    // let bin_votes = [];
+    console.log("bin size", bin_size)
+    let bin_votes_weight_for = initializeArrayWithZeros(bins);
+    console.log("bin_votes_weight_for", bin_votes_weight_for)
+    let bin_votes_weight_against = initializeArrayWithZeros(bins);
+    let bin_votes_weight_abstain = initializeArrayWithZeros(bins);
+    
+    votesData.forEach(vote => {
+      let bin = Math.floor((parseFloat(vote.weight) - min_vote_weight)/bin_size);
+      if(vote.support === 1){
+        bin_votes_weight_for[bin] += 1;
+      }else if(vote.support === 0){
+        bin_votes_weight_against[bin] += 1;
+      }else{
+        bin_votes_weight_abstain[bin] += 1;
+      }
+    });
+    console.log("getAreaChartData", [bin_votes_weight_for, bin_votes_weight_against, bin_votes_weight_abstain])
+    return [bin_votes_weight_for, bin_votes_weight_against, bin_votes_weight_abstain, min_vote_weight];
+
+  }
+
+
 
   useEffect(() => {
     
@@ -536,12 +596,12 @@ const getVoteDistributionData = () => {
       Highcharts.defaultOptions.legend.backgroundColor =  "#27293d";
 
       let voteDistributionData = getVoteDistributionData();
-      const voteDistribution = {
+      const voteDistribution_count = {
         chart: {
             type: 'column'
         },
         title: {
-            text: 'Proposal Results',
+            text: 'Vote Counts Distribution',
             align: 'left'
         },
         xAxis: {
@@ -583,18 +643,83 @@ const getVoteDistributionData = () => {
                 }
             }
         },
-        series: [{
+        series: [
+          {
             name: 'UpVote',
-            data: voteDistributionData[0],
+            data: [voteDistributionData[0][0]],
             color: "#42f593"
         }, {
             name: 'Against',
-            data: voteDistributionData[1],
+            data: [voteDistributionData[1][0]],
             color: "#f5427b"
         }
         , {
             name: 'Abstain',
-            data: voteDistributionData[2],
+            data: [voteDistributionData[2][0]],
+            color: "#42aaf5"
+        }
+      ]
+      }
+      const voteDistribution_weight = {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Vote Token Weight Distribution',
+            align: 'left'
+        },
+        xAxis: {
+            categories: ['For', 'Against'
+            , 'Abstain'
+          ]
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Weighted Votes'
+            },
+            stackLabels: {
+                enabled: true
+            }
+        },
+        legend: {
+            align: 'left',
+            x: 70,
+            verticalAlign: 'top',
+            y: 70,
+            floating: true,
+            backgroundColor:
+                Highcharts.defaultOptions.legend.backgroundColor || 'white',
+            borderColor: '#CCC',
+            borderWidth: 1,
+            shadow: false
+
+        },
+        tooltip: {
+            headerFormat: '<b>{point.x}</b><br/>',
+            pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+        },
+        plotOptions: {
+            column: {
+                stacking: 'normal',
+                dataLabels: {
+                    enabled: true
+                }
+            }
+        },
+        series: [
+          {
+            name: 'UpVote',
+            data: [parseFloat((voteDistributionData[0][1]/voteDistributionData[3][1]*100).toFixed(2))],
+            color: "#42f593"
+        }, {
+            name: 'Against',
+            data: [parseFloat((voteDistributionData[1][1]/voteDistributionData[3][1]*100).toFixed(2))],
+            color: "#f5427b"
+        }
+        , {
+            name: 'Abstain',
+            data: [parseFloat((voteDistributionData[2][1]/voteDistributionData[3][1]*100).toFixed(2))],
             color: "#42aaf5"
         }
       ]
@@ -691,6 +816,7 @@ const getVoteDistributionData = () => {
       }]
 
       };
+
       const areaChart = {
         chart: {
           type: 'area'
@@ -832,7 +958,8 @@ const getVoteDistributionData = () => {
         }
 
       }
-        Highcharts.chart('customChart', voteDistribution);
+        Highcharts.chart('voteDistribution_count', voteDistribution_count);
+        Highcharts.chart('voteDistribution_weight', voteDistribution_weight  );
         Highcharts.chart('scatterPlot', scatterPlot);
         Highcharts.chart('areaChart', areaChart);
         Highcharts.chart('lineChart', lineChart);
@@ -911,20 +1038,20 @@ if (!votesData || !proposalsData) return "Loading...";
               <CardHeader>
                 <h5 className="card-category">For Votes: </h5>
                 <CardTitle tag="h3">
-                  <i className="tim-icons icon-check-2 text-info" /> {(getVoteDistributionData()[0]*100/votesData.length).toFixed(1)} %
+                  <i className="tim-icons icon-check-2 text-info" /> {(getVoteDistributionData()[0][0]*100/votesData.length).toFixed(1)} %
                  
                 </CardTitle>
               </CardHeader>
               <CardHeader>
                 <h5 className="card-category">Against Votes</h5>
                 <CardTitle tag="h3">
-                  <i className="tim-icons icon-simple-remove text-info" /> {(getVoteDistributionData()[1]*100/votesData.length).toFixed(1)} %
+                  <i className="tim-icons icon-simple-remove text-info" /> {(getVoteDistributionData()[1][0]*100/votesData.length).toFixed(1)} %
                 </CardTitle>
               </CardHeader>
               <CardHeader>
                 <h5 className="card-category">Abstain Votes</h5>
                 <CardTitle tag="h3">
-                  <i className="tim-icons icon-sound-wave text-info" /> {(getVoteDistributionData()[2]*100/votesData.length).toFixed(1)} %
+                  <i className="tim-icons icon-sound-wave text-info" /> {(getVoteDistributionData()[2][0]*100/votesData.length).toFixed(1)} %
                 </CardTitle>
               </CardHeader>
               <CardHeader>
@@ -944,19 +1071,45 @@ if (!votesData || !proposalsData) return "Loading...";
         <Col lg="4">
             <Card className="card-chart">
               <CardBody>
-                <div className="chart-area" id="customChart" style={{height: "400px"}}>
+                <div className="chart-area" id="voteDistribution_count" style={{height: "400px"}}>
                 </div>
               </CardBody>
             </Card>
           </Col>
-          <Col lg="6">
+        <Col lg="2">
             <Card className="card-chart">
-              <CardHeader>
-                <h5 className="card-category">Description</h5>
+              {/* <CardHeader> */}
+                {/* <h5 className="card-category">Participation Rate</h5>
                 <CardTitle tag="h3">
-                  <i className="tim-icons icon-chat-33 text-info" /> Proposal Data
+                  <i className="tim-icons icon-chat-33 text-info" /> 82.5%
+                </CardTitle>
+              </CardHeader> */}
+              
+              <CardHeader>
+                <h5 className="card-category">For Tokens: </h5>
+                <CardTitle tag="h3">
+                  <i className="tim-icons icon-check-2 text-info" /> {(getVoteDistributionData()[0][1]*100/getVoteDistributionData()[3][1]).toFixed(1)} % 
+                 
                 </CardTitle>
               </CardHeader>
+              <CardHeader>
+                <h5 className="card-category">Against Tokens</h5>
+                <CardTitle tag="h3">
+                  <i className="tim-icons icon-simple-remove text-info" /> {(getVoteDistributionData()[1][1]*100/getVoteDistributionData()[3][1]).toFixed(1)} % 
+                </CardTitle>
+              </CardHeader>
+              <CardHeader>
+                <h5 className="card-category">Abstain Tokens</h5>
+                <CardTitle tag="h3">
+                  <i className="tim-icons icon-sound-wave text-info" /> {(getVoteDistributionData()[2][1]*100/getVoteDistributionData()[3][1]).toFixed(1)} % 
+                </CardTitle>
+              </CardHeader>
+              {/* <CardHeader>
+                <h5 className="card-category">Total Tokens</h5>
+                <CardTitle tag="h3">
+                  <i className="tim-icons icon-chat-33 text-info" /> {getVoteDistributionData()[3][1]}
+                </CardTitle>
+              </CardHeader> */}
               <CardBody>
                 <div className="chart-area" id='infoApi' style={{height: "310px"}}>
                     <strong>Proposal Id:</strong>
@@ -980,36 +1133,45 @@ if (!votesData || !proposalsData) return "Loading...";
               </CardBody>
             </Card>
           </Col>
+          
 
         </Row>
 
 
+      <Row>
 
 
-        <Row>
-          <Col lg="12">
+      <Col lg="12">
             <Card className="card-chart">
-              {/* <CardHeader>
-                <h5 className="card-category">title</h5>
+              <CardHeader>
+                <h5 className="card-category">Description</h5>
                 <CardTitle tag="h3">
-                  <i className="tim-icons icon-bell-55 text-info" /> 763,215
+                  <i className="tim-icons icon-chat-33 text-info" /> Proposal Data
                 </CardTitle>
-              </CardHeader> */}
-              <CardBody style={{height: "500px"}}>
-                <div className="chart-area">
-                <div className="chart-area" id="scatterPlot" style={{height: "500px"}}></div>
+              </CardHeader>
+              <CardBody>
+                <div className="chart-area table-responsive"  style={{height: "310px"}}>
+                    <strong>Proposal Id:</strong> {selectedProposal.proposalId} <br/>
+                    <strong>Proposer:</strong> {selectedProposal.proposer} <br/>
+                    <strong>Quorum:</strong> {selectedProposal.Quorum} <br/>
+                    <strong>Begin Date:</strong> {selectedProposal.blockTimestamp} <br/>
+                    {/* <strong>End Date:</strong> {selectedProposal.endDate} <br/> */}
+                    <strong>Description:</strong> {selectedProposal.description} <br/>
+                    <div>
+                      {/* {loading && <strong>loading...</strong>} */}
+                      {/* {error && <strong>Ups... Algo salió mal. {error.message}</strong>}
+                      {data?.map((user, key) => (<strong key={key}>{user.proposalId}</strong>))} */}
+                    </div>
                 </div>
               </CardBody>
             </Card>
           </Col>
 
-        </Row>
+      </Row>
 
-
-
-
-        <Row>
-        <Col lg="6" md="12">
+      
+      <Row>
+        <Col lg="12" md="12">
             <Card className="card-tasks">
               <CardHeader>
                 <h6 className="title d-inline">Upvote</h6>
@@ -1062,7 +1224,7 @@ if (!votesData || !proposalsData) return "Loading...";
               </CardBody>
             </Card>
           </Col>
-          <Col lg="6" md="12">
+          <Col lg="12" md="12">
             <Card className="card-tasks">
               <CardHeader>
                 <h6 className="title d-inline">Against</h6>
@@ -1102,10 +1264,10 @@ if (!votesData || !proposalsData) return "Loading...";
               </CardBody>
             </Card>
           </Col>
-          {/* <Col lg="4" md="12">
+          <Col lg="12" md="12">
             <Card className="card-tasks">
               <CardHeader>
-                <h6 className="title d-inline">Abstain</h6>
+                <h6 className="title d-inline">Abstains</h6>
                 <p className="card-category d-inline"> votes</p>
 
               </CardHeader>
@@ -1116,18 +1278,17 @@ if (!votesData || !proposalsData) return "Loading...";
                     <tr>
                       <th>Wallet</th>
                       <th>No. Tokens</th>
-
                       <th ></th>
                     </tr>
                   </thead>
                   <tbody>
-                  {votes_results.map((vote, index)=>(
+                  {votesData.map((vote, index)=>(
                         <>
-                        {vote.proposal_id == selectedProposal.id_proposal &&  vote.vote == "abstain" ?
+                       {vote.proposalId == selectedProposal.proposalId && vote.support!= 0 && vote.support!= 1 ?
                           (
                               <tr key={index}>
-                                <td>{vote.wallet}</td>
-                                <td>{participant_data[vote.wallet]?.TokensNumber}</td>
+                                <td>{vote.voter}</td>
+                                <td>{vote.weight}</td>
                                 <td className="td-actions text-right"><Button color="link" id="tooltip636901683" title="" type="button">
                                       <i className="tim-icons icon-badge" />
                                     </Button></td>
@@ -1142,13 +1303,28 @@ if (!votesData || !proposalsData) return "Loading...";
                 </div>
               </CardBody>
             </Card>
-          </Col> */}
+          </Col>
+          
+
+        </Row>
+        <Row>
+          <Col lg="12">
+            <Card className="card-chart">
+        
+              <CardBody style={{height: "500px"}}>
+                <div className="chart-area">
+                <div className="chart-area" id="scatterPlot" style={{height: "500px"}}></div>
+                </div>
+              </CardBody>
+            </Card>
+          </Col>
 
         </Row>
 
 
 
-        <Row>
+
+      <Row>
           <Col lg="6">
             <Card className="card-chart">
               <CardHeader>
@@ -1166,11 +1342,7 @@ if (!votesData || !proposalsData) return "Loading...";
           <Col lg="6">
             <Card className="card-chart">
               <CardHeader>
-                {/* <h5 className="card-category">Daily Sales</h5>
-                <CardTitle tag="h3">
-                  <i className="tim-icons icon-delivery-fast text-primary" />{" "}
-                  3,500€
-                </CardTitle> */}
+  
               </CardHeader>
               <CardBody>
                 <div className="chart-area" id="lineChart" style={{height: "500px"}}>
@@ -1181,6 +1353,12 @@ if (!votesData || !proposalsData) return "Loading...";
           </Col>
 
         </Row>
+
+
+       
+
+        
+        
       </div>
     </>
   );
