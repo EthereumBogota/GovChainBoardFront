@@ -260,8 +260,8 @@
           color: $white;
       }
 
-      &.bg-white .dropdown-menu .dropdown-item:focus,
-      &.bg-white .dropdown-menu .dropdown-item:hover{
+      &.dropdown-menu .dropdown-item:focus,
+      &.dropdown-menu .dropdown-item:hover{
           color: $default;
       }
 

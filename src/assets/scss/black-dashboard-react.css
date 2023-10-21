@@ -6426,7 +6426,7 @@ button.bg-default:focus {
   background-color: #243152 !important;
 }
 
-.bg-white {
+{
   background-color: #ffffff !important;
 }
 
@@ -6456,7 +6456,7 @@ button.bg-darker:focus {
   background-color: black !important;
 }
 
-.bg-white {
+{
   background-color: #ffffff !important;
 }
 
@@ -13269,29 +13269,29 @@ img {
 .navbar.navbar-transparent {
   background: #0d0f19;
 }
-.navbar.bg-white .navbar-nav .search-bar.input-group i {
+.navbar.navbar-nav .search-bar.input-group i {
   color: #FFF;
 }
-.navbar.bg-white .navbar-nav .search-bar.input-group .form-control {
+.navbar.navbar-nav .search-bar.input-group .form-control {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 4px;
 }
-.navbar.bg-white .navbar-nav a.nav-link {
+.navbar.navbar-nav a.nav-link {
   color: #FFF !important;
 }
-.navbar.bg-white .navbar-nav a.nav-link p {
+.navbar.navbar-nav a.nav-link p {
   color: #FFF;
 }
-.navbar.bg-white .navbar-text, .navbar.bg-white .navbar-brand {
+.navbar.navbar-text, .navbar.navbar-brand {
   color: #FFF;
 }
-.navbar.bg-white .form-control {
+.navbar.form-control {
   color: #FFF !important;
 }
-.navbar.bg-white .form-control::-moz-placeholder {
+.navbar.form-control::-moz-placeholder {
   color: #9A9A9A !important;
 }
-.navbar.bg-white .form-control::placeholder {
+.navbar.form-control::placeholder {
   color: #9A9A9A !important;
 }
 .navbar.bg-dark {
@@ -13440,7 +13440,7 @@ img {
   .navbar .dropdown-menu .dropdown-item:hover {
     color: #ffffff;
   }
-  .navbar.bg-white .dropdown-menu .dropdown-item:focus, .navbar.bg-white .dropdown-menu .dropdown-item:hover {
+  .navbar.dropdown-menu .dropdown-item:focus, .navbar.dropdown-menu .dropdown-item:hover {
     color: #344675;
   }
   .navbar button.navbar-toggler[data-target="#navigation"] {
