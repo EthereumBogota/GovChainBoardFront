@@ -90,17 +90,15 @@ function DashboardProposal(props) {
   // use state loading
   const [loading, setLoading] = useState(true);
 
+  const [selectedContract, setSelectedContract] = useState("TrueFi"); // useState<Partial<Contract>>({});
   const [selectedProposal, setSelectedProposal] = useState({}); // useState<Partial<Proposal>>({});
-  
-  
-  
+
+
   const contract_endpoints = {
     "GovChainBoard": "https://api.studio.thegraph.com/query/54390/govchainboard-scroll-governor/version/latest",
     "TrueFi": "https://api.studio.thegraph.com/query/54390/truefi-governor/version/latest",
     "EnsDAO": "https://api.studio.thegraph.com/query/54390/ens-dao/version/latest",
   }
-  const [selectedContract, setSelectedContract] = useState(Object.entries(contract_endpoints)[0][0]); // useState<Partial<Contract>>({});
-  // setSelectedContract(Object.entries(contract_endpoints)[0][0]);
 
   // let endpoint = "https://api.studio.thegraph.com/query/54390/truefi-governor/version/latest"
 const query_votes = `
@@ -112,41 +110,28 @@ const query_votes = `
     }
   }
 `;
-const [votesData, setVotesData] = useState(false);
-
-useQuery("votes", () => {
-  return axios({
-    url: contract_endpoints[selectedContract],
-    method: "POST",
-    data: {
-      query: query_votes
-    }
-  }).then(response => setVotesData( response.data.data));
-});
-
-
 const query_proposals = `
-{
-  proposalCreateds {
-    proposalId
-    proposer
-    description
-    blockTimestamp
-  }
-}
-`;
-
-const [proposalsData, setProposalsData] = useState(false);
-
-useQuery("Proposals", () => {
-  return axios({
-    url: contract_endpoints[selectedContract],
-    method: "POST",
-    data: {
-      query: query_proposals
+  {
+    voteCasts {
+      weight
+      voter
+      proposalId
     }
-  }).then(response => setProposalsData( response.data.data));
-});
+  }
+`;
+  const [votesData, setVotesData] = useState(false);
+
+  useQuery("votes", () => {
+    return axios({
+      url: contract_endpoints[selectedContract],
+      method: "POST",
+      data: {
+        query: query_votes
+      }
+    }).then(response => setVotesData( response.data.data));
+  });
+
+
 
 
 
@@ -203,25 +188,10 @@ useQuery("Proposals", () => {
     }
   ];
 
-  const handleDropdownDaoChange = (event) => {
-    console.log(event.target.value);
-    // console.log(proposalsData?.proposalCreateds.find(proposal => proposal.proposalId === event.target.value));
-    setSelectedContract(contract_endpoints[event.target.value]);
-    axios({
-        url: contract_endpoints[event.target.value],
-        method: "POST",
-        data: {
-          query: query_proposals
-        }
-      }).then(response => setProposalsData( response.data.data));
-  
-    
-  };
-
   const handleDropdownProposalChange = (event) => {
     console.log(event.target.value);
-    console.log(proposalsData?.proposalCreateds.find(proposal => proposal.proposalId === event.target.value));
-    setSelectedProposal(proposalsData?.proposalCreateds.find(proposal => proposal.proposalId === event.target.value));
+    console.log(proposals_data.find(proposal => proposal.id_proposal === event.target.value));
+    setSelectedProposal(proposals_data.find(proposal => proposal.id_proposal === parseInt(event.target.value)));
   };
 
   const votes_results = [
@@ -471,12 +441,9 @@ useQuery("Proposals", () => {
 
 
 
-  
   useEffect(() => {
 
-    if(votesData && proposalsData){
-    setSelectedProposal(proposalsData.proposalCreateds[0]);
-    }
+    setSelectedProposal(proposals_data[0])
 
 
 
@@ -1057,15 +1024,12 @@ useQuery("Proposals", () => {
       }
 
     }
-    if(votesData && proposalsData){
+    Highcharts.chart('customChart', voteDistribution);
+    // Highcharts.chart('scatterPlot', scatterPlot);
+    // Highcharts.chart('areaChart', areaChart);
+    // Highcharts.chart('lineChart', lineChart);
 
-      Highcharts.chart('customChart', voteDistribution);
-      Highcharts.chart('scatterPlot', scatterPlot);
-      Highcharts.chart('areaChart', areaChart);
-      Highcharts.chart('lineChart', lineChart);
-    }
-
-  }, [votesData, proposalsData]);
+  }, []);
 
   /// calling data from the graph
 
@@ -1081,39 +1045,28 @@ useQuery("Proposals", () => {
 //   return request(endpoint, query_votes);
 // });
 
-if (!votesData || !proposalsData) return "Loading...";
+if (!votesData) return "Loading...";
 // if (votes_error) return <pre>{votes_error.message}</pre>;
 
 
   return (
     <>
       <div className="content">
-
-
-        {/* Dropdown to select DAO */}
         <Row id='row__toggle' >
-        
-        <select  aria-label="Default select example"
-          variant="success" id="dropdown-basic"
-          value={selectedProposal.id_proposal}
-          className="dropdown-toggle form-select-propolal"
-          onChange={handleDropdownDaoChange}
-          style={{backgroundColor: "#2e65e6"}}
-        >
-          {Object.entries(contract_endpoints).map(([key, value]) => (
-          <option key={key} value={key}>{key}</option>
-        ))}
+        {/* <button className="dropdown-toggle" onClick={toggleDropdown}>
+          Toggle Dropdown
+        </button>
+        <Dropdown show={isDropdownOpen}  alignright="true" style={{ width: '100%' }}>
+          <Dropdown.Toggle  onClick={toggleDropdown} variant="success" id="dropdown-basic">
+            Proposal: Id o Nombre de proposal Dropdown
+          </Dropdown.Toggle>
+          <Dropdown.Menu onSelect={handleDropdownProposalChange}>
+            {proposals_data.map((proposal, index) => (
+              <Dropdown.Item key={index} href={"#/"+proposal.id_proposal}>{proposal.description}</Dropdown.Item>
+            ))}
+          </Dropdown.Menu>
+        </Dropdown> */}
 
-        </select>
-        </Row>
-        <br></br>
-        <br></br>
-    
-
-
-            {/* Dropdown to select proposal */}
-        <Row id='row__toggle' >
-      
         <select  aria-label="Default select example"
           variant="success" id="dropdown-basic"
           value={selectedProposal.id_proposal}
@@ -1121,8 +1074,8 @@ if (!votesData || !proposalsData) return "Loading...";
           onChange={handleDropdownProposalChange}
           style={{backgroundColor: "#2e65e6"}}
         >
-          {proposalsData.proposalCreateds.map((proposal, index) => (
-            <option key={index} value={proposal.proposalId}> {proposal.description}</option>
+          {proposals_data.map((proposal, index) => (
+            <option key={index} value={proposal.id_proposal}>{proposal.id_proposal}. {proposal.description}</option>
           ))}
 
         </select>
@@ -1166,17 +1119,15 @@ if (!votesData || !proposalsData) return "Loading...";
               <CardHeader>
                 <h5 className="card-category">Description</h5>
                 <CardTitle tag="h3">
-                  <i className="tim-icons icon-chat-33 text-info" /> Proposal Data
+                  <i className="tim-icons icon-chat-33 text-info" /> Proposal: {selectedProposal.id_proposal}. {selectedProposal.description}
                 </CardTitle>
               </CardHeader>
               <CardBody>
                 <div className="chart-area"  style={{height: "310px"}}>
-                    <strong>Proposal Id:</strong> {selectedProposal.proposalId} <br/>
-                    <strong>Proposer:</strong> {selectedProposal.proposer} <br/>
+                    <strong>Proposer:</strong> {selectedProposal.proposer_wallet} <br/>
                     <strong>Quorum:</strong> {selectedProposal.Quorum} <br/>
-                    <strong>Begin Date:</strong> {selectedProposal.blockTimestamp} <br/>
-                    {/* <strong>End Date:</strong> {selectedProposal.endDate} <br/> */}
-                    <strong>Description:</strong> {selectedProposal.description} <br/>
+                    <strong>Begin Date:</strong> {selectedProposal.beginDate} <br/>
+                    <strong>End Date:</strong> {selectedProposal.endDate} <br/>
                     <div>
                       {loading && <strong>loading...</strong>}
                       {/* {error && <strong>Ups... Algo salió mal. {error.message}</strong>}
