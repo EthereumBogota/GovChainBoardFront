@@ -17,6 +17,7 @@
 */
 import React, { useEffect } from 'react';
 import Highcharts from 'highcharts';
+import { useFetch } from './ApiUrl';
 
 import DarkUnica from 'highcharts/themes/high-contrast-dark';
 
@@ -89,8 +90,6 @@ function DashboardProposal(props) {
 
   const [selectedProposal, setSelectedProposal] = useState({}); // useState<Partial<Proposal>>({}); 
   
-
-
 
   const proposals_data  = [
     { 
@@ -970,7 +969,7 @@ function DashboardProposal(props) {
 
   }, []);
 
-
+  const {data, loading, error} = useFetch("https://api.studio.thegraph.com/query/54390/test-mainnet/version/latest");
 
   return (
     <>
@@ -1031,15 +1030,8 @@ function DashboardProposal(props) {
           </Col>
         <Col lg="4">
             <Card className="card-chart">
-              {/* <CardHeader>
-                <h5 className="card-category">Total Votes</h5>
-                <CardTitle tag="h3">
-                  <i className="tim-icons icon-chat-33 text-info" /> 33
-                </CardTitle>
-              </CardHeader> */}
               <CardBody>
                 <div className="chart-area" id="customChart" style={{height: "400px"}}>
-
                 </div>
               </CardBody>
             </Card>
@@ -1058,7 +1050,11 @@ function DashboardProposal(props) {
                     <strong>Quorum:</strong> {selectedProposal.Quorum} <br/>
                     <strong>Begin Date:</strong> {selectedProposal.beginDate} <br/>
                     <strong>End Date:</strong> {selectedProposal.endDate} <br/>
-     
+                    <div>
+                      {loading && <strong>loading...</strong>}
+                      {error && <strong>Ups... Algo salió mal. {error.message}</strong>}
+                      {data?.map((user) => (<strong key={user.id}>{user.proposalId}</strong>))}
+                    </div>
                 </div>
               </CardBody>
             </Card>
