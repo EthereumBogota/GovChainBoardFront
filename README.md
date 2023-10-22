@@ -19,7 +19,6 @@ La unica carpeta que deberiamos de estar editando es la de ```src``` que es dond
 
 Dentro de esta carpeta tenemos:
 - assets: 
-- TODO
 
 # Run Dockerfile
 docker build -t meetdapp:latest .
