@@ -713,7 +713,8 @@ if (!votesData || !proposalsData) return <div><br></br><br></br>"Loading..."</di
 
         </select>
         </Row>
-        <Card className="card-chart" style={{height: "80px", alignItems: "center", marginTop:"30px" }}>
+        <Card className="card-chart" style={{height: "130px", alignItems: "center", marginTop:"30px" }}>
+          <h3 style={{color:"white"}}>Categories</h3>
             <Row>
               <button>
                 <h5 className="card-category">Blockchain</h5>

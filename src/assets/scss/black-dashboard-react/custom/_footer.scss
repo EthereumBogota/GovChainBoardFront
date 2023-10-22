@@ -20,9 +20,14 @@
 
     .nav-item{
       display: inline-block;
-
-      &:first-child a {
-        padding-left: 0;
+      .linkGit{
+        color: #ba54f5;
+        cursor: pointer;
+        transition: all .2s ease-in;
+      }
+      .linkGit:hover, .linkGit:active{
+        padding: 4px 0;
+        border-bottom: 1px solid white;
       }
     }
 

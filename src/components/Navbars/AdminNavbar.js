@@ -126,7 +126,7 @@ function AdminNavbar(props) {
                     </DropdownItem>
                   </NavLink>
                   <NavLink tag="li">
-                    <DropdownItem className="nav-item">
+                    <DropdownItem className="nav-item" href="https://github.com/EthereumBogota/GovChainBoardFront">
                       If you have feedback, you can do it in our github🤩
                     </DropdownItem>
                   </NavLink>

@@ -9,7 +9,7 @@ function Footer() {
       <Container fluid>
         <Nav>
           <NavItem>
-            <p>If you like our job give us a star in our github⭐</p>
+            <a className="linkGit" href="https://github.com/EthereumBogota/GovChainBoardFront">If you like our job give us a star in our github⭐</a>
           </NavItem>
           <NavItem>
             <NavLink href="/landing/">

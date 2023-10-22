@@ -1,6 +1,11 @@
 .card-chart {
   overflow: hidden;
   height: 420px;
+  h3{
+    color: white;
+    margin-top: 10px;
+    margin-bottom: -10px;
+  }
   .row{
     margin: auto -15px;
     display: flex;
@@ -16,7 +21,7 @@
         font-weight: 600;
       }
     }
-    button:hover{
+    button:hover, button:active{
       border: 1px solid #000;
       background-color: #1b3060;
       box-shadow: 0 0 8px 0 #191e32;
