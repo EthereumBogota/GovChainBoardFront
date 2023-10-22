@@ -1,20 +1,3 @@
-/*!
-
-=========================================================
-* Black Dashboard React v1.2.2
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/black-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/black-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React, { useEffect } from 'react';
 import { useFetch } from './ApiUrl';
 
@@ -22,12 +5,6 @@ import { useFetch } from './ApiUrl';
 import { useQuery } from "react-query";
 import axios from "axios";
 
-
-
-/* import React from "react"; */
-// nodejs library that concatenates classes
-// import classNames from "classnames";
-// react plugin used to create charts
 import { Line, Bar } from "react-chartjs-2";
 
 // reactstrap components
@@ -252,16 +229,7 @@ function DashboardProposal(props) {
 
   };
 
-
-
-  
   useEffect(() => {
-
-    
-
-
-
-
     if( proposalsData){
       setSelectedProposal(proposalsData[0]);
 
@@ -289,17 +257,10 @@ function DashboardProposal(props) {
 
         console.log("New votes", response);
         setVotesData( response.data.data.voteCasts)
-
-        
       });
-
-    
-
     }
 
   }, [proposalsData]);
-
-
 
   const votes_results = [
     {
@@ -445,9 +406,6 @@ function DashboardProposal(props) {
     },
   ];
 
-
-
-
   const participant_data = {
     '0xFEDCBA0987654321': {
         'TokensNumber': 100,
@@ -546,9 +504,6 @@ function DashboardProposal(props) {
     },
 }
 
-
-
-
 // Funtions to organize the data
 const getVoteDistributionData = () => {
   
@@ -639,10 +594,6 @@ const getVoteDistributionData = () => {
         }
       });
       Highcharts.defaultOptions.legend.backgroundColor =  "#27293d";
-
-
-   
-
 
       let voteDistributionData = getVoteDistributionData();
       const voteDistribution_count = {
@@ -1029,7 +980,7 @@ const getVoteDistributionData = () => {
 //   return request(endpoint, query_votes);
 // });
 // return "Loading...";
-if (!votesData || !proposalsData) return "Loading...";
+if (!votesData || !proposalsData) return <div><br></br><br></br>"Loading..."</div>;
 // if (votes_error) return <pre>{votes_error.message}</pre>;
 
 
@@ -1056,9 +1007,6 @@ if (!votesData || !proposalsData) return "Loading...";
         </Row>
         <br></br>
         
-    
-
-
             {/* Dropdown to select proposal */}
         <Row id='row__toggle' >
         Proposal:
@@ -1163,13 +1111,16 @@ if (!votesData || !proposalsData) return "Loading...";
                 </CardTitle>
               </CardHeader> */}
               <CardBody>
-                {/* <div className="chart-area" id="customChart" style={{height: "400px"}}>
-
-                </div> */}
+                <div className="chart-area">
+                    <div>
+                      {/* {error && <strong>Ups... Algo salió mal. {error.message}</strong>}
+                      {data?.map((user, key) => (<strong key={key}>{user.proposalId}</strong>))} */}
+                    </div>
+                </div>
               </CardBody>
             </Card>
           </Col>
-        <Col lg="4">
+          <Col lg="4">
             <Card className="card-chart">
               <CardBody>
                 <div className="chart-area" id="voteDistribution_weight" style={{height: "400px"}}>
@@ -1194,13 +1145,17 @@ if (!votesData || !proposalsData) return "Loading...";
                 </CardTitle>
               </CardHeader>
               <CardBody>
-                <div className="chart-area table-responsive"  style={{height: "310px"}}>
-                    <strong>Proposal Id:</strong> {selectedProposal.proposalId} <br/>
-                    <strong>Proposer:</strong> {selectedProposal.proposer} <br/>
-                    <strong>Quorum:</strong> {selectedProposal.Quorum} <br/>
-                    <strong>Begin Date:</strong> {selectedProposal.blockTimestamp} <br/>
-                    {/* <strong>End Date:</strong> {selectedProposal.endDate} <br/> */}
-                    <strong>Description:</strong> {selectedProposal.description} <br/>
+                <div className="chart-area" id='infoApi'  style={{height: "310px"}}>
+                  <strong>Proposal Id:</strong>
+                  <p>{selectedProposal.proposalId}</p><br/>
+                  <strong>Proposer:</strong> 
+                  <p>{selectedProposal.proposer}</p><br/>
+                  <strong>Begin Date:</strong> 
+                  <p>{selectedProposal.blockTimestamp}</p><br/>
+                  <strong>End Date:</strong> 
+                  <p>{selectedProposal.endDate}</p><br/>
+                  <strong>Description:</strong> 
+                  <p>{selectedProposal.description}</p><br/>
                     <div>
                       {/* {loading && <strong>loading...</strong>} */}
                       {/* {error && <strong>Ups... Algo salió mal. {error.message}</strong>}
