@@ -15,6 +15,9 @@ Para ver la landing page luego de ejecutar ```npm start``` redirigete a: ```url.
 ## Diagrama de flujo
 https://drive.google.com/file/d/1EDIP1Nr_r7RDYEDenPmRantAqFJTZ1LR/view?usp=sharing
 
+## Contratos Scroll
+https://github.com/EthereumBogota/GovChainBoardBack.git
+
 
 # Explicación documentos principales:
 ## TODO
