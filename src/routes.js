@@ -15,21 +15,20 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import Icons from "views/Icons.js";
 import Map from "views/Map.js";
 import Notifications from "views/Notifications.js";
 import Rtl from "views/Rtl.js";
 import TableList from "views/TableList.js";
 import Typography from "views/Typography.js";
 import UserProfile from "views/UserProfile.js";
-import Login from "views/Login.js"
+import Login from "views/Login.js";
 
 import Dashboard from "views/Dashboard.js";
 import DashboardGeneral from "views/DashboardGeneral.js";
 import DashboardProposal from "views/DashboardProposal.js";
 import DashboardParticipant from "views/DashboardParticipant.js";
+import Documentation from "views/Documentation.js";
 import Logout from "views/Logout.js";
-import Chat from "views/Chat.js"
 
 var routes = [
   // {
@@ -91,25 +90,24 @@ var routes = [
 
   // },
   {
-    path: "/chat",
-    name: "Chat",
+    path: "/documentation",
+    name: "Documentation",
     rtlName: "",
-    icon: "tim-icons icon-chat-33",
-    component: <Chat />,
+    icon: "tim-icons icon-book-bookmark",
+    component: <Documentation />,
     componentUnlogged: <Login />,
     layout: "/dashboard",
     isPrivate: true,
   },
-  // {
-  //   path: "/icons",
-  //   name: "Icons",
-  //   rtlName: "الرموز",
-  //   icon: "tim-icons icon-atom",
-  //   component: <Icons />,
-  //   layout: "/dashboard",
-    // //   isPrivate: true,
-
-  // },
+  /* {
+    path: "/icons",
+    name: "Icons",
+    rtlName: "الرموز",
+    icon: "tim-icons icon-atom",
+    component: <Icons />,
+    layout: "/dashboard",
+    isPrivate: true,
+  }, */
   // {
   //   path: "/map",
   //   name: "Map",
