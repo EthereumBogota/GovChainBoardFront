@@ -1,6 +1,26 @@
 .card-tasks {
   height: 473px;
 
+  .tableChart{
+    overflow-y: scroll;
+    overflow-x: hidden
+  }
+  .tableChart::-webkit-scrollbar{
+    width: 5px;
+    border-radius: 8px;
+    margin-left: 20px;
+  }
+  .tableChart::-webkit-scrollbar-thumb{
+    background-color: #6c757d;
+    height: 20px;
+    width: 5px;
+    border-radius: 8px;
+  }
+  .tableChart::-webkit-scrollbar-track{
+    width: 5px;
+    border-radius: 8px;
+  }
+
   .table-full-width {
     max-height: 410px;
     position: relative;

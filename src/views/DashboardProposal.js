@@ -689,7 +689,6 @@ if (!votesData || !proposalsData) return <div><br></br><br></br>"Loading..."</di
           value={selectedContract}
           className="dropdown-toggle form-select-propolal"
           onChange={handleDropdownDaoChange}
-          style={{backgroundColor: "#2e65e6"}}
         >
           {Object.entries(contract_endpoints).map(([key, value]) => (
           <option key={key} value={key}>{key}</option>
@@ -707,7 +706,6 @@ if (!votesData || !proposalsData) return <div><br></br><br></br>"Loading..."</di
           value={selectedProposal.proposalId}
           className="dropdown-toggle form-select-propolal"
           onChange={handleDropdownProposalChange}
-          style={{backgroundColor: "#2e65e6"}}
         >
           {proposalsData.map((proposal, index) => (
             <option key={index} value={proposal.proposalId}> {proposal.description}</option>
@@ -876,11 +874,9 @@ if (!votesData || !proposalsData) return <div><br></br><br></br>"Loading..."</di
               <CardHeader>
                 <h6 className="title d-inline">Upvote</h6>
                 <p className="card-category d-inline"> votes</p>
-
-
               </CardHeader>
               <CardBody>
-                <div className="table-full-width table-responsive">
+                <div className="table-full-width table-responsive tableChart">
                   <Table>
                   <thead className="text-primary">
                     <tr>
@@ -929,10 +925,9 @@ if (!votesData || !proposalsData) return <div><br></br><br></br>"Loading..."</di
               <CardHeader>
                 <h6 className="title d-inline">Against</h6>
                 <p className="card-category d-inline"> votes</p>
-
               </CardHeader>
-              <CardBody>
-                <div className="table-full-width table-responsive">
+              <CardBody id="Card2">
+                <div className="table-full-width table-responsive tableChart">
                   <Table>
                   <thead className="text-primary">
                     <tr>
@@ -971,8 +966,8 @@ if (!votesData || !proposalsData) return <div><br></br><br></br>"Loading..."</di
                 <p className="card-category d-inline"> votes</p>
 
               </CardHeader>
-              <CardBody>
-                <div className="table-full-width table-responsive">
+              <CardBody id="Card3">
+                <div className="table-full-width table-responsive tableChart">
                   <Table>
                   <thead className="text-primary">
                     <tr>
