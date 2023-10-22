@@ -1,8 +1,8 @@
 {
+  "homepage": "https://EthereumBogota.github.io/GovChainBoardFront",
   "name": "gov-chain-board",
   "version": "1.2.2",
   "private": true,
-  "homepage": "/",
   "dependencies": {
     "@fortawesome/fontawesome-free": "6.4.0",
     "@metamask/sdk-react": "^0.10.0",
@@ -34,6 +34,8 @@
     "web3": "^4.2.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build && gulp licenses",
     "test": "react-scripts test --env=jsdom",
@@ -60,6 +62,7 @@
     "reactstrap": "8.10.1"
   },
   "devDependencies": {
+    "gh-pages": "^6.0.0",
     "typescript": "5.0.4"
   },
   "overrides": {
