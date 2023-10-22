@@ -23,6 +23,7 @@ Dentro de esta carpeta tenemos:
 
 # Run Dockerfile
 docker build -t meetdapp:latest .
+
 docker run -p 8082:80 -v "$(pwd)":/code -it GovChainBoardFront:latest
 
 
