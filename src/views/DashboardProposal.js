@@ -713,12 +713,26 @@ if (!votesData || !proposalsData) return <div><br></br><br></br>"Loading..."</di
 
         </select>
         </Row>
+        <Card className="card-chart" style={{height: "80px", alignItems: "center", marginTop:"30px" }}>
+            <Row>
+              <button>
+                <h5 className="card-category">Blockchain</h5>
+              </button>
+              <button>
+                <h5 className="card-category">Cryptocurrencies</h5>
+              </button>
+              <button>
+                <h5 className="card-category">Decentralization</h5>
+              </button>
+              <button>
+                <h5 className="card-category">Web3</h5>
+              </button>
+                </Row>
+            </Card>
           {/* <p>Selected Proposal: {selectedProposal.id_proposal}. {selectedProposal.description}</p> */}
-          <br></br>
         <Row>
 
-        <Col lg="6">
-          
+          <Col lg="6">
             <Card className="card-chart" style={{height: "80px", alignItems: "center" }}>
             <Row>
               {/* <CardHeader> */}
@@ -1011,7 +1025,7 @@ if (!votesData || !proposalsData) return <div><br></br><br></br>"Loading..."</di
                       
                
           <Col lg="12">
-            <Card className="card-chart">
+            <Card className="card-chart" style={{height:"540px"}}>
               <CardHeader>
               </CardHeader>
               <CardBody style={{height: "500px"}}>
@@ -1029,7 +1043,7 @@ if (!votesData || !proposalsData) return <div><br></br><br></br>"Loading..."</di
 
       <Row>
           <Col lg="6">
-            <Card className="card-chart">
+            <Card className="card-chart" style={{height:"540px"}}>
               <CardHeader>
                 {/* <h5 className="card-category">Votes / Time Distribution</h5>
                 <CardTitle tag="h3">
@@ -1043,7 +1057,7 @@ if (!votesData || !proposalsData) return <div><br></br><br></br>"Loading..."</di
             </Card>
           </Col>
           <Col lg="6">
-            <Card className="card-chart">
+            <Card className="card-chart" style={{height:"540px"}}>
               <CardHeader>
   
               </CardHeader>

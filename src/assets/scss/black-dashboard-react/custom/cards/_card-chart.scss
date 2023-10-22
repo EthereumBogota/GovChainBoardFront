@@ -1,6 +1,30 @@
 .card-chart {
   overflow: hidden;
   height: 420px;
+  .row{
+    margin: auto -15px;
+    display: flex;
+    gap: 16px;
+    button{
+      border: 1px solid #fff;
+      padding: 15px;
+      border-radius: 10px;
+      transition: all .5s ease-in;
+      box-shadow: 0 0 8px 0 black;
+      h5{
+        margin: 0 auto;
+        font-weight: 600;
+      }
+    }
+    button:hover{
+      border: 1px solid #000;
+      background-color: #1b3060;
+      box-shadow: 0 0 8px 0 #191e32;
+      h5{
+        color: #42f593;
+      }
+    }
+  }
   .card-header{
     .card-title{
       i{
