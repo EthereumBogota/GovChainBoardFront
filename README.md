@@ -12,6 +12,9 @@ Dentro de la carpeta ```public/landing``` se colocara el código html, css y js 
 
 Para ver la landing page luego de ejecutar ```npm start``` redirigete a: ```url.com/black-dashboard-react/landing```
 
+## Diagrama de flujo
+https://drive.google.com/file/d/1EDIP1Nr_r7RDYEDenPmRantAqFJTZ1LR/view?usp=sharing
+
 
 # Explicación documentos principales:
 ## TODO
