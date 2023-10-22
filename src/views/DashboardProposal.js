@@ -1111,21 +1111,8 @@ if (!votesData || !proposalsData) return <div><br></br><br></br>"Loading..."</di
                 </CardTitle>
               </CardHeader> */}
               <CardBody>
-                <div className="chart-area" id='infoApi' style={{height: "310px"}}>
-                    <strong>Proposal Id:</strong>
-                    <p>{selectedProposal.proposalId}</p><br/>
-                    <strong>Proposer:</strong> 
-                    <p>{selectedProposal.proposer}</p><br/>
-                    <strong>Begin Date:</strong> 
-                    <p>{selectedProposal.blockTimestamp}</p><br/>
-                    <strong>End Date:</strong> 
-                    <p>{selectedProposal.endDate}</p><br/>
-                    <strong>Description:</strong> 
-                    <p>{selectedProposal.description}</p><br/>
-                    {/* <strong>Quorum:</strong> 
-                    <p>{selectedProposal.Quorum}</p><br/> */}
+                <div className="chart-area">
                     <div>
-                      {loading && <strong>loading...</strong>}
                       {/* {error && <strong>Ups... Algo salió mal. {error.message}</strong>}
                       {data?.map((user, key) => (<strong key={key}>{user.proposalId}</strong>))} */}
                     </div>
@@ -1158,13 +1145,17 @@ if (!votesData || !proposalsData) return <div><br></br><br></br>"Loading..."</di
                 </CardTitle>
               </CardHeader>
               <CardBody>
-                <div className="chart-area table-responsive"  style={{height: "310px"}}>
-                    <strong>Proposal Id:</strong> {selectedProposal.proposalId} <br/>
-                    <strong>Proposer:</strong> {selectedProposal.proposer} <br/>
-                    <strong>Quorum:</strong> {selectedProposal.Quorum} <br/>
-                    <strong>Begin Date:</strong> {selectedProposal.blockTimestamp} <br/>
-                    {/* <strong>End Date:</strong> {selectedProposal.endDate} <br/> */}
-                    <strong>Description:</strong> {selectedProposal.description} <br/>
+                <div className="chart-area" id='infoApi'  style={{height: "310px"}}>
+                  <strong>Proposal Id:</strong>
+                  <p>{selectedProposal.proposalId}</p><br/>
+                  <strong>Proposer:</strong> 
+                  <p>{selectedProposal.proposer}</p><br/>
+                  <strong>Begin Date:</strong> 
+                  <p>{selectedProposal.blockTimestamp}</p><br/>
+                  <strong>End Date:</strong> 
+                  <p>{selectedProposal.endDate}</p><br/>
+                  <strong>Description:</strong> 
+                  <p>{selectedProposal.description}</p><br/>
                     <div>
                       {/* {loading && <strong>loading...</strong>} */}
                       {/* {error && <strong>Ups... Algo salió mal. {error.message}</strong>}

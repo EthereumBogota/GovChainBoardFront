@@ -16412,6 +16412,7 @@ textarea.form-control {
 }
 .card-chart {
   overflow: hidden;
+  height: 420px;
 }
 .card-chart .card-header .card-title i {
   font-size: 16px;
