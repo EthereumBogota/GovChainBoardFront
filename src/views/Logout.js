@@ -18,22 +18,23 @@ function Logout(){
 	const [account, setAccount] = useState();
 	const { sdk, connected, connecting, provider, chainId } = useSDK();
 
-	// const connect = async () => {
-	// 	try {
-	// 	const accounts = await sdk?.connect();
-	// 	setAccount(accounts?.[0]);
-	// 	console.log(accounts);
-	// 	} catch(err) {
-	// 	console.warn(`failed to connect..`, err);
-	// 	}
-	// };
+	const connect = async () => {
+		try {
+		const accounts = await sdk?.connect();
+		setAccount(accounts?.[0]);
+		console.log(accounts);
+		} catch(err) {
+		console.warn(`failed to connect..`, err);
+		}
+	};
 	
-	// useEffect(() => {
-	// 	if(connected){
-	// 		// navigate('/dashboard/proposal')
-	// 		navigate("/dashboard/proposal");
-	// 	}
-	//   }, [connected]);
+	useEffect(() => {
+		if(connected){
+			// navigate('/dashboard/proposal')
+			connect();
+			// navigate("/dashboard/proposal");
+		}
+	  }, [connected]);
 
 
     return(

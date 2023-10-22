@@ -108,71 +108,6 @@ function DashboardProposal(props) {
   
   const [votesData, setVotesData] = useState(false);
   
-  // useQuery("votes", () => {
-  //   return axios({
-  //     url: contract_endpoints[selectedContract],
-  //     method: "POST",
-  //     data: {
-  //       query: query_votes
-  //     }
-  //   }).then(response => {console.log("first votes:",  response.data.data.voteCasts);setVotesData( response.data.data.voteCasts)});
-  // });
-
-
-
-// UseStates votes_data
-  // const [votes_data, setVotesData] = useState({});
-
-  // setVotesData(votes_data_);
-  // useEffect(() => {
-
-  //   setVotesData(votes_data_)
-  //   console.log(votes_data_)
-
-  // }, [votes_data_]);
-  // useEffect(() => {
-
-  //   // setVotesData(votes_data_)
-  //   console.log(votes_data)
-
-  // }, [votes_data]);
-
-
-  // const proposals_data  = [
-  //   {
-  //       "id_proposal": 1,
-  //       "description": "Proposal for a new community garden",
-  //       "proposer_wallet": "0xABCDEF1234567890",
-  //       "Quorum": 10,
-  //       "beginDate": "2023-10-20",
-  //       "endDate": "2023-11-20"
-  //   },
-  //   {
-  //       "id_proposal": 2,
-  //       "description": "Budget proposal for office renovations",
-  //       "proposer_wallet": "0x1234567890ABCDEF",
-  //       "Quorum": 15,
-  //       "beginDate": "2023-10-25",
-  //       "endDate": "2023-11-25"
-  //   },
-  //   {
-  //       "id_proposal": 3,
-  //       "description": "Policy change regarding remote work",
-  //       "proposer_wallet": "0xFEDCBA0987654321",
-  //       "Quorum": 20,
-  //       "beginDate": "2023-10-30",
-  //       "endDate": "2023-11-30"
-  //   },
-  //   {
-  //       "id_proposal": 4,
-  //       "description": "New product development proposal",
-  //       "proposer_wallet": "0x567890ABCDEF1234",
-  //       "Quorum": 12,
-  //       "beginDate": "2023-11-01",
-  //       "endDate": "2023-12-01"
-  //   }
-  // ];
-
   const handleDropdownDaoChange = (event) => {
     console.log(event.target.value);
     // console.log(proposalsData?.proposalCreateds.find(proposal => proposal.proposalId === event.target.value));
@@ -194,10 +129,6 @@ function DashboardProposal(props) {
         // handleDropdownProposalChange(event);
       
       });
-     
-
-      
-  
     
   };
 
@@ -262,247 +193,8 @@ function DashboardProposal(props) {
 
   }, [proposalsData]);
 
-  const votes_results = [
-    {
-        "wallet": "0xABCDEF1234567890",
-        "vote": "for",
-        "reason": "I support the proposal for the community garden",
-        "voteDate": "2023-10-21",
-        "proposal_id": 1
-    },
-    {
-        "wallet": "0x1234567890ABCDEF",
-        "vote": "against",
-        "reason": "I oppose the budget proposal for office renovations",
-        "voteDate": "2023-10-26",
-        "proposal_id": 2
-    },
-    {
-        "wallet": "0xFEDCBA0987654321",
-        "vote": "abstain",
-        "reason": "I'm undecided on the policy change regarding remote work",
-        "voteDate": "2023-10-31",
-        "proposal_id": 3
-    },
-    {
-        "wallet": "0x567890ABCDEF1234",
-        "vote": "for",
-        "voteDate": "2023-11-02",
-        "proposal_id": 4
-    },
-    {
-        "wallet": "0x9ABCDEF1234567890",
-        "vote": "for",
-        "reason": "I want to support the community garden project",
-        "voteDate": "2023-11-03",
-        "proposal_id": 1
-    },
-    {
-        "wallet": "0x7890ABCDEF123456",
-        "vote": "against",
-        "reason": "I think the office renovation budget is excessive",
-        "voteDate": "2023-11-05",
-        "proposal_id": 1
-    },
-    {
-        "wallet": "0x234567890ABCDEF1",
-        "vote": "for",
-        "reason": "I believe in the importance of community gardens",
-        "voteDate": "2023-11-07",
-        "proposal_id": 1
-    },
-    {
-        "wallet": "0x5432109876543210",
-        "vote": "abstain",
-        "voteDate": "2023-11-09",
-        "proposal_id": 1
-    },
-    {
-        "wallet": "0xA1B2C3D4E5F6A7B8",
-        "vote": "for",
-        "reason": "I support the community garden initiative",
-        "voteDate": "2023-11-11",
-        "proposal_id": 1
-    },
-    {
-        "wallet": "0xB1C2D3E4F5A6B7C8",
-        "vote": "against",
-        "reason": "I have concerns about the garden's maintenance",
-        "voteDate": "2023-11-13",
-        "proposal_id": 1
-    },
-    {
-        "wallet": "0xC1D2E3F4A5B6C7D8",
-        "vote": "for",
-        "voteDate": "2023-11-15",
-        "proposal_id": 1
-    },
-    {
-      "wallet": "0xD8C7B6A5F4E3D2C1",
-      "vote": "against",
-      "reason": "I have concerns about the proposal's sustainability",
-      "voteDate": "2023-11-17",
-      "proposal_id": 1
-    },
-    {
-        "wallet": "0xE7B6A5F4E3D2C1D8",
-        "vote": "for",
-        "reason": "I believe in the benefits of a community garden",
-        "voteDate": "2023-11-19",
-        "proposal_id": 1
-    },
-    {
-        "wallet": "0xF6A5B4E3D2C1D8C7",
-        "vote": "abstain",
-        "voteDate": "2023-11-21",
-        "proposal_id": 1
-    },
-    {
-        "wallet": "0xA5B4E3D2C1D8C7F6",
-        "vote": "for",
-        "reason": "I think a community garden would be a great addition",
-        "voteDate": "2023-11-23",
-        "proposal_id": 1
-    },
-    {
-        "wallet": "0xB4E3D2C1D8C7F6A5",
-        "vote": "against",
-        "reason": "I'm concerned about the space for the garden",
-        "voteDate": "2023-11-25",
-        "proposal_id": 1
-    },
-    {
-        "wallet": "0xC3D2C1D8C7F6A5B4",
-        "vote": "for",
-        "voteDate": "2023-11-27",
-        "proposal_id": 1
-    },
-    {
-        "wallet": "0xD2C1D8C7F6A5B4E3",
-        "vote": "for",
-        "reason": "I support community initiatives like this",
-        "voteDate": "2023-11-29",
-        "proposal_id": 1
-    },
-    {
-        "wallet": "0xC1D8C7F6A5B4E3D2",
-        "vote": "abstain",
-        "voteDate": "2023-12-01",
-        "proposal_id": 1
-    },
-    {
-        "wallet": "0xF5A6B7C8D1E2C3B4",
-        "vote": "for",
-        "reason": "I'm in favor of more green spaces in our community",
-        "voteDate": "2023-12-03",
-        "proposal_id": 1
-    },
-    {
-        "wallet": "0xD1E2C3B4F5A6B7C8",
-        "vote": "against",
-        "reason": "I have concerns about maintenance costs",
-        "voteDate": "2023-12-05",
-        "proposal_id": 1
-    },
-  ];
+ 
 
-  const participant_data = {
-    '0xFEDCBA0987654321': {
-        'TokensNumber': 100,
-        'MemberSince': '2021-01-01',
-        'HistoricParticipation': 85,
-    },
-    '0xA5B4E3D2C1D8C7F6': {
-        'TokensNumber': 75,
-        'MemberSince': '2020-03-15',
-        'HistoricParticipation': 50,
-    },
-    '0xC3D2C1D8C7F6A5B4': {
-        'TokensNumber': 50,
-        'MemberSince': '2019-06-20',
-        'HistoricParticipation': 25,
-    },
-    '0x234567890ABCDEF1': {
-        'TokensNumber': 200,
-        'MemberSince': '2022-05-10',
-        'HistoricParticipation': 90,
-    },
-    '0x567890ABCDEF1234': {
-        'TokensNumber': 150,
-        'MemberSince': '2020-12-05',
-        'HistoricParticipation': 60,
-    },
-    '0xABCDEF1234567890': {
-        'TokensNumber': 300,
-        'MemberSince': '2018-09-28',
-        'HistoricParticipation': 95,
-    },
-    '0xB1C2D3E4F5A6B7C8': {
-        'TokensNumber': 120,
-        'MemberSince': '2019-11-30',
-        'HistoricParticipation': 55,
-    },
-    '0x1234567890ABCDEF': {
-        'TokensNumber': 80,
-        'MemberSince': '2021-08-17',
-        'HistoricParticipation': 30,
-    },
-    '0xD8C7B6A5F4E3D2C1': {
-        'TokensNumber': 90,
-        'MemberSince': '2021-02-14',
-        'HistoricParticipation': 40,
-    },
-    '0x7890ABCDEF123456': {
-        'TokensNumber': 110,
-        'MemberSince': '2019-04-03',
-        'HistoricParticipation': 50,
-    },
-    '0x5432109876543210': {
-        'TokensNumber': 60,
-        'MemberSince': '2020-10-22',
-        'HistoricParticipation': 20,
-    },
-    '0xA1B2C3D4E5F6A7B8': {
-        'TokensNumber': 180,
-        'MemberSince': '2018-07-12',
-        'HistoricParticipation': 75,
-    },
-    '0xE7B6A5F4E3D2C1D8': {
-        'TokensNumber': 95,
-        'MemberSince': '2020-01-08',
-        'HistoricParticipation': 35,
-    },
-    '0xF6A5B4E3D2C1D8C7': {
-        'TokensNumber': 70,
-        'MemberSince': '2021-03-25',
-        'HistoricParticipation': 15,
-    },
-    '0xC1D8C7F6A5B4E3D2': {
-        'TokensNumber': 130,
-        'MemberSince': '2019-10-05',
-        'HistoricParticipation': 45,
-    },
-    '0xD2C1D8C7F6A5B4E3': {
-        'TokensNumber': 85,
-        'MemberSince': '2021-07-19',
-        'HistoricParticipation': 25,
-    },
-    '0xB4E3D2C1D8C7F6A5': {
-        'TokensNumber': 115,
-        'MemberSince': '2019-05-12',
-        'HistoricParticipation': 50,
-    },
-    '0xD1E2C3B4F5A6B7C8': {
-        'TokensNumber': 140,
-        'MemberSince': '2019-12-10',
-        'HistoricParticipation': 60,
-    },
-    '0xF5A6B7C8D1E2C3B4': {
-        'TokensNumber': 160,
-        'MemberSince': '2019-03-05',
-        'HistoricParticipation': 80,
-    },
-}
 
 // Funtions to organize the data
 const getVoteDistributionData = () => {
@@ -1027,8 +719,10 @@ if (!votesData || !proposalsData) return <div><br></br><br></br>"Loading..."</di
           <br></br>
         <Row>
 
-        <Col lg="2">
-            <Card className="card-chart">
+        <Col lg="6">
+          
+            <Card className="card-chart" style={{height: "80px", alignItems: "center" }}>
+            <Row>
               {/* <CardHeader> */}
                 {/* <h5 className="card-category">Participation Rate</h5>
                 <CardTitle tag="h3">
@@ -1064,27 +758,22 @@ if (!votesData || !proposalsData) return <div><br></br><br></br>"Loading..."</di
               <CardBody>
                 {/* <div className="chart-area" id="customChart" style={{height: "400px"}}>
 
+
                 </div> */}
               </CardBody>
+                </Row>
             </Card>
           </Col>
-        <Col lg="4">
-            <Card className="card-chart">
-              <CardBody>
-                <div className="chart-area" id="voteDistribution_count" style={{height: "400px"}}>
-                </div>
-              </CardBody>
-            </Card>
-          </Col>
-        <Col lg="2">
-            <Card className="card-chart">
-              {/* <CardHeader> */}
+
+          <Col lg="6">
+          <Card className="card-chart" style={{height: "80px", alignItems: "center" }}>
+                        {/* <CardHeader> */}
                 {/* <h5 className="card-category">Participation Rate</h5>
                 <CardTitle tag="h3">
                   <i className="tim-icons icon-chat-33 text-info" /> 82.5%
                 </CardTitle>
               </CardHeader> */}
-              
+              <Row>
               <CardHeader>
                 <h5 className="card-category">For Tokens: </h5>
                 <CardTitle tag="h3">
@@ -1110,6 +799,7 @@ if (!votesData || !proposalsData) return <div><br></br><br></br>"Loading..."</di
                   <i className="tim-icons icon-chat-33 text-info" /> {getVoteDistributionData()[3][1]}
                 </CardTitle>
               </CardHeader> */}
+              </Row>
               <CardBody>
                 <div className="chart-area">
                     <div>
@@ -1120,7 +810,18 @@ if (!votesData || !proposalsData) return <div><br></br><br></br>"Loading..."</di
               </CardBody>
             </Card>
           </Col>
-          <Col lg="4">
+
+
+        <Col lg="6">
+            <Card className="card-chart">
+              <CardBody>
+                <div className="chart-area" id="voteDistribution_count" style={{height: "400px"}}>
+                </div>
+              </CardBody>
+            </Card>
+          </Col>
+        
+          <Col lg="6">
             <Card className="card-chart">
               <CardBody>
                 <div className="chart-area" id="voteDistribution_weight" style={{height: "400px"}}>
@@ -1306,10 +1007,18 @@ if (!votesData || !proposalsData) return <div><br></br><br></br>"Loading..."</di
           
 
         </Row>
+              <CardTitle tag="h3">
+                  <i className="tim-icons icon-spaceship text-info" /> In Progress...
+                 
+                </CardTitle>
         <Row>
+
+                      
+               
           <Col lg="12">
             <Card className="card-chart">
-        
+              <CardHeader>
+              </CardHeader>
               <CardBody style={{height: "500px"}}>
                 <div className="chart-area">
                 <div className="chart-area" id="scatterPlot" style={{height: "500px"}}></div>
