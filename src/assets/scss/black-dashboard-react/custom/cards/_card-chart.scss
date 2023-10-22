@@ -1,5 +1,6 @@
 .card-chart {
   overflow: hidden;
+  height: 420px;
   .card-header{
     .card-title{
       i{
@@ -34,9 +35,37 @@
   }
 
   .chart-area {
+    padding: 0 10px;
     height: 220px;
     width: 100%;
+    strong{
+      color: #6c757d;
+      font-weight: 500;
+    }
+    p{
+      color: #fff;
+    }
   }
+
+  #infoApi{
+    overflow-y: scroll;
+  }
+  #infoApi::-webkit-scrollbar{
+    width: 5px;
+    border-radius: 8px;
+    margin-right: 8px;
+  }
+  #infoApi::-webkit-scrollbar-thumb{
+    background-color: #6c757d;
+    height: 20px;
+    width: 5px;
+    border-radius: 8px;
+  }
+  #infoApi::-webkit-scrollbar-track{
+    width: 5px;
+    border-radius: 8px;
+  }
+
   .card-footer {
     margin-top: 15px;
 

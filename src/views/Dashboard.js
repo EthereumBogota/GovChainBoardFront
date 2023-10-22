@@ -1,20 +1,3 @@
-/*!
-
-=========================================================
-* Black Dashboard React v1.2.2
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/black-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/black-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React, { useEffect } from 'react';
 import Highcharts from 'highcharts';
 
@@ -64,6 +47,7 @@ DarkUnica(Highcharts);
 
 
 function Dashboard(props) {
+
   
 
   const josethChart = {
@@ -136,7 +120,6 @@ function Dashboard(props) {
 
 
   useEffect(() => {
-
 
     Highcharts.setOptions({
       chart: {
@@ -278,7 +261,6 @@ function Dashboard(props) {
               </CardHeader>
               <CardBody>
                 <div className="chart-area" id="josethChart" style={{height: "400px"}}>
-
                 </div>
               </CardBody>
             </Card>

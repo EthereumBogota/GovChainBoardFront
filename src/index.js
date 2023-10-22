@@ -20,9 +20,13 @@ import ReactDOM from "react-dom/client";
 import { MetaMaskUIProvider } from '@metamask/sdk-react-ui';
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
-import AdminLayout from "layouts/Admin/Admin.js";
-import App from './views/Login.js';
-import RTLLayout from "layouts/RTL/RTL.js";
+
+import { Provider } from 'react-redux'
+import store from './store'
+
+
+import DashboardLayout from "layouts/Dashboard/Dashboard.js";
+import Landing from "layouts/Landing_Page/Landing.js"
 
 import "assets/scss/black-dashboard-react.scss";
 import "assets/demo/demo.css";
@@ -31,11 +35,18 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import ThemeContextWrapper from "./components/ThemeWrapper/ThemeWrapper";
 import BackgroundColorWrapper from "./components/BackgroundColorWrapper/BackgroundColorWrapper";
+// import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const client = new QueryClient();
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
+    <Provider store={store}>
+    <QueryClientProvider client={client}>      
     <MetaMaskUIProvider sdkOptions={{
       dappMetadata: {
         name: "Demo UI React App",
@@ -45,16 +56,20 @@ root.render(
     <BackgroundColorWrapper>
       <BrowserRouter>
         <Routes>
-          <Route path="/admin/*" element={<AdminLayout />} />
-          <Route path="/rtl/*" element={<RTLLayout />} />
+          <Route path="/dashboard/*" element={<DashboardLayout />} />
+          {/* <Route path="/rtl/*" element={<RTLLayout />} /> */}
+          <Route path="/landing/*" element={<Landing />} />
           <Route
             path="*"
-            element={<Navigate to="/admin/proposal" replace />}
+            element={<Navigate to="/landing" replace />}
           />
         </Routes>
       </BrowserRouter>
     </BackgroundColorWrapper>
   </ThemeContextWrapper>
     </MetaMaskUIProvider>
+    </QueryClientProvider>
+
+    </Provider>
   </React.StrictMode>,
 );

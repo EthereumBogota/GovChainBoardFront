@@ -30,10 +30,23 @@ import {
   BackgroundColorContext,
   backgroundColors,
 } from "contexts/BackgroundColorContext";
+import { useSDK } from "@metamask/sdk-react-ui";
 
-var ps;
+
+
+
+var ps; 
+
+
+import { useSelector, useDispatch } from 'react-redux'
+
 
 function Sidebar(props) {
+  // IS TRUE IF IS LOGGED
+  const logged = useSelector((state) => state.logged.value)
+  const { connected } = useSDK();
+
+
   const location = useLocation();
   const sidebarRef = React.useRef(null);
   // verifies if routeName is the one active (in browser input)
@@ -58,7 +71,7 @@ function Sidebar(props) {
     document.documentElement.classList.remove("nav-open");
   };
   const { routes, rtlActive, logo } = props;
-  logo.outterLink = "";
+  logo.outterLink = "/landing/";
   logo.innerLink = "";
   logo.text = "GovChainBoard";
   let logoImg = null;
@@ -69,7 +82,7 @@ function Sidebar(props) {
         <a
           href={logo.outterLink}
           className="simple-text logo-mini"
-          target="_blank"
+          target=""
           onClick={props.toggleSidebar}
         >
           <div className="logo-img">
@@ -113,7 +126,7 @@ function Sidebar(props) {
   return (
     <BackgroundColorContext.Consumer>
       {({ color }) => (
-        <div className="sidebar" data={color}>
+        <div className="sidebar sidebarInactive" data={color}>
           <div className="sidebar-wrapper" ref={sidebarRef}>
             {logoImg !== null || logoText !== null ? (
               <div className="logo">
@@ -122,8 +135,28 @@ function Sidebar(props) {
               </div>
             ) : null}
             <Nav>
+              {/* {connected ? <p style={{backgroundColor: "black"}}>connected</p>:<p style={{backgroundColor: "black"}}>not connected</p>} */}
               {routes.map((prop, key) => {
-                if (prop.redirect) return null;
+                
+                
+                if(prop.isPrivate && connected) return (
+                  <li
+                    className={
+                      activeRoute(prop.path) + (prop.pro ? " active-pro" : "")
+                    }
+                    key={key}
+                  >
+                    <NavLink
+                      to={prop.layout + prop.path}
+                      className="nav-link"
+                      onClick={props.toggleSidebar}
+                    >
+                      <i className={prop.icon} />
+                      <p>{rtlActive ? prop.rtlName : prop.name}</p>
+                    </NavLink>
+                  </li>
+                );
+                    if (prop.isPrivate) return null;
                 return (
                   <li
                     className={
@@ -142,12 +175,6 @@ function Sidebar(props) {
                   </li>
                 );
               })}
-              <li className="active-pro">
-                <ReactstrapNavLink href="/upgrade-to-pro">
-                  <i className="tim-icons icon-spaceship" />
-                  <p>Upgrade to PRO</p>
-                </ReactstrapNavLink>
-              </li>
             </Nav>
           </div>
         </div>
