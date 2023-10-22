@@ -1,6 +1,6 @@
-/build/
+/build
 /node_modules
 package-lock.json
-/build/
+/build
 .vscode
 .eslintcache
