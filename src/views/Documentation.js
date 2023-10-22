@@ -43,84 +43,33 @@ function Chat() {
           <Col md="12">
             <Card>
               <CardHeader>
-                <CardTitle tag="h4">Notifications</CardTitle>
+                <CardTitle tag="h4" style={{fontWeight:"bold"}}>Notifications</CardTitle>
               </CardHeader>
               <CardBody>
-                <p>The third section, 'Notifications', is where you will receive important messages and relevant notifications related to your participation on the platform. You can set alerts to stay informed about the latest updates and events of special interest.</p><br>
-                <p>We want to use XMTP as a technology to use the technologies, our goal is that our users can receive notifications either in the wallet such as metamask or right here in the Dapp. We know that this feature will provide a great help to all those who use our dapp</p>
+                <p style={{paddingBottom:"12px"}}>The third section, 'Notifications', is where you will receive important messages and relevant notifications related to your participation on the platform. You can set alerts to stay informed about the latest updates and events of special interest.</p>
+                <p style={{paddingTop:"12px", borderTop:"2px solid #1a1e31"}}>We want to use XMTP as a technology to use the technologies, our goal is that our users can receive notifications either in the wallet such as metamask or right here in the Dapp. We know that this feature will provide a great help to all those who use our dapp</p>
               </CardBody>
             </Card>
           </Col>
           <Col md="12">
             <Card className="card-plain">
               <CardHeader>
-                <CardTitle tag="h4">Implement an AI</CardTitle>
+                <CardTitle tag="h4" style={{fontWeight:"bold"}}>Implement an AI</CardTitle>
               </CardHeader>
               <CardBody>
-                <p>We want to create an environment in which, through a notification and chat system, supported by AI, the members of the DAO are aware of the proposals, votes and decisions of interest about their organization, also allowing us to establish alerts on a topic in DAO specific</p><br>
-                <p></p>
+                <p style={{paddingBottom:"12px"}}>We want to create an environment in which, through a notification and chat system, supported by AI, the members of the DAO are aware of the proposals, votes and decisions of interest about their organization, also allowing us to establish alerts on a topic in DAO specific</p>
+                <p style={{paddingTop:"12px", borderTop:"2px solid #b0b0b0"}}>An AI can be implemented and adapted to too many things, in addition to providing millions of tools that help the development of our dapp, the objective is to create a chatbot where the AI notifies the user of the different proposals that have been made, in addition to providing them with an analysis of how the voting results have been so that if the user has any doubt or question it can be resolved by this bot</p>
               </CardBody>
             </Card>
-            <Card className="card-plain">
+          </Col>
+          <Col md="12">
+            <Card>
               <CardHeader>
-                <CardTitle tag="h4">Table on Plain Background</CardTitle>
-                <p className="category">Here is a subtitle for this table</p>
+                <CardTitle tag="h4" style={{fontWeight:"bold"}}>Decentralized Storage</CardTitle>
               </CardHeader>
               <CardBody>
-                <Table className="tablesorter" responsive>
-                  <thead className="text-primary">
-                    <tr>
-                      <th>Name</th>
-                      <th>Country</th>
-                      <th>City</th>
-                      <th className="text-center">Salary</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Dakota Rice</td>
-                      <td>Niger</td>
-                      <td>Oud-Turnhout</td>
-                      <td className="text-center">$36,738</td>
-                    </tr>
-                    <tr>
-                      <td>Minerva Hooper</td>
-                      <td>Curaçao</td>
-                      <td>Sinaai-Waas</td>
-                      <td className="text-center">$23,789</td>
-                    </tr>
-                    <tr>
-                      <td>Sage Rodriguez</td>
-                      <td>Netherlands</td>
-                      <td>Baileux</td>
-                      <td className="text-center">$56,142</td>
-                    </tr>
-                    <tr>
-                      <td>Philip Chaney</td>
-                      <td>Korea, South</td>
-                      <td>Overland Park</td>
-                      <td className="text-center">$38,735</td>
-                    </tr>
-                    <tr>
-                      <td>Doris Greene</td>
-                      <td>Malawi</td>
-                      <td>Feldkirchen in Kärnten</td>
-                      <td className="text-center">$63,542</td>
-                    </tr>
-                    <tr>
-                      <td>Mason Porter</td>
-                      <td>Chile</td>
-                      <td>Gloucester</td>
-                      <td className="text-center">$78,615</td>
-                    </tr>
-                    <tr>
-                      <td>Jon Porter</td>
-                      <td>Portugal</td>
-                      <td>Gloucester</td>
-                      <td className="text-center">$98,615</td>
-                    </tr>
-                  </tbody>
-                </Table>
+                <p style={{paddingBottom:"12px"}}>We will also store enriched valuable information that can be accessed through web3.storage so that your data has the value it deserves and can be consulted and analyzed today, tomorrow and for future generations.</p>
+                <p style={{paddingTop:"12px", borderTop:"2px solid #1a1e31"}}>Privacy is a right and we want the information of the DAOs that trust our service to be in a safe place where their data cannot be vulnerable, much less accessible. Therefore, using a decentralized storage is the most effective solution, because the information is always encrypted and protected.</p>
               </CardBody>
             </Card>
           </Col>
